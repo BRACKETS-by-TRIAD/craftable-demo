@@ -1,3 +1,4 @@
 *.sqlite
 .idea/
+.idea/*fit
 .editorconfig
