@@ -1,0 +1,94 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    image: brackets/nginx:latest
+    ports:
+     - "${DOCKER_APP_PORT:-80}:80"
+    volumes:
+     - .:/var/www/html
+     - node_modules:/var/www/html/node_modules
+    networks:
+     - harbornet
+  php:
+    build:
+      context: ./docker/php/${DOCKER_PHP_VERSION:-7.2}
+      dockerfile: Dockerfile
+    image: brackets/php:${DOCKER_PHP_VERSION:-7.2}
+    environment:
+      APP_ENV: "${APP_ENV:-local}"
+      XDEBUG_HOST: "${XDEBUG_HOST:-host.docker.internal}"
+      DOCKER_PHP_XDEBUG: "${DOCKER_PHP_XDEBUG:-off}"
+    volumes:
+     - .:/var/www/html
+     - ./docker/php/ssh:/root/.ssh
+     - psyhistory:/root/.config
+     - node_modules:/var/www/html/node_modules
+     - composer-cache:/root/.composer/cache
+    networks:
+     - harbornet
+  pgsql:
+    image: postgres:${DOCKER_POSTGRES_VERSION:-10}
+    ports:
+     - "${DOCKER_PGSQL_PORT:-5432}:5432"
+    environment:
+      POSTGRES_DB: "${DB_DATABASE:-homestead}"
+      POSTGRES_USER: "${DB_USERNAME:-homestead}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-secret}"
+      PGPASSWORD: "${DB_PASSWORD:-secret}"
+    volumes:
+     - pgsqldata:/var/lib/postgresql/data
+     - ./docker/pgsql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+     - ./docker/pgsql/export:/export
+     - ./docker/pgsql/import:/import
+    networks:
+     - harbornet
+  testing:
+    image: postgres:${DOCKER_POSTGRES_VERSION:-10}
+    ports:
+     - "${DOCKER_PGSQL_TEST_PORT:-5433}:5432"
+    environment:
+      POSTGRES_DB: "${DB_DATABASE:-homestead}"
+      POSTGRES_USER: "${DB_USERNAME:-homestead}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-secret}"
+      PGPASSWORD: "${DB_PASSWORD:-secret}"
+    volumes:
+     - ${DOCKER_PGSQL_TEST_DIR}:/var/lib/postgresql/data
+     - ./docker/testing/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+     - harbornet
+  node:
+    build:
+      context: ./docker/node/${DOCKER_NODE_VERSION:-8}
+      dockerfile: Dockerfile
+    image: brackets/node:${DOCKER_NODE_VERSION:-8}
+    user: node
+    volumes:
+     - .:/var/www/html
+     - vendor:/var/www/html/vendor
+    networks:
+     - harbornet
+  redis:
+    image: redis:alpine
+    volumes:
+     - redisdata:/data
+    networks:
+     - harbornet
+networks:
+  harbornet:
+    driver: "bridge"
+volumes:
+  pgsqldata:
+    driver: "local"
+  redisdata:
+    driver: "local"
+  psyhistory:
+    driver: "local"
+  node_modules:
+    driver: "local"
+  vendor:
+    driver: "local"
+  composer-cache:
+    external: true
