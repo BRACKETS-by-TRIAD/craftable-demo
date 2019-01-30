@@ -98,8 +98,8 @@ class FillDefaultAdminUserAndPermissions extends Migration
             [
                 'first_name' => 'Administrator',
                 'last_name' => 'Administrator',
-                'email' => 'administrator@brackets.sk',
-                'password' => Hash::make($this->password),
+                'email' => 'demo@getcraftable.com',
+                'password' => Hash::make('demo123'),
                 'remember_token' => null,
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
