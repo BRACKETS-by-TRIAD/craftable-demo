@@ -28,7 +28,7 @@
         <input type="password" v-model="form.password" v-validate="'min:7'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('password'), 'form-control-success': this.fields.password && this.fields.password.valid}" id="password" name="password" placeholder="{{ trans('admin.admin-user.columns.password') }}" ref="password">
         <div v-if="errors.has('password')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('password') }}</div>
         <small class="form-text text-muted">
-            Please note that password cannot be changed in this demo project.
+            Please note that password and email cannot be changed in this demo project.
         </small>
     </div>
 </div>

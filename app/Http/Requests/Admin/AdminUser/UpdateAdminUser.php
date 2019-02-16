@@ -28,7 +28,6 @@ class UpdateAdminUser extends FormRequest
         $rules = [
             'first_name' => ['nullable', 'string'],
             'last_name' => ['nullable', 'string'],
-            'email' => ['sometimes', 'email', Rule::unique('admin_users', 'email')->ignore($this->adminUser->getKey(), $this->adminUser->getKeyName())->whereNull('deleted_at'), 'string'],
             'forbidden' => ['sometimes', 'boolean'],
             'language' => ['sometimes', 'string'],
                 
