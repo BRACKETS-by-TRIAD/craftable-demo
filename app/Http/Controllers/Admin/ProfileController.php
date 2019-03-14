@@ -65,6 +65,7 @@ class ProfileController extends Controller
         $this->validate($request, [
             'first_name' => ['nullable', 'string'],
             'last_name' => ['nullable', 'string'],
+            'email' => ['sometimes', 'email', Rule::unique('admin_users', 'email')->ignore($this->adminUser->getKey(), $this->adminUser->getKeyName())->whereNull('deleted_at'), 'string'],
             'language' => ['sometimes', 'string'],
             
         ]);
@@ -73,6 +74,7 @@ class ProfileController extends Controller
         $sanitized = $request->only([
             'first_name',
             'last_name',
+            'email',
             'language',
             
         ]);

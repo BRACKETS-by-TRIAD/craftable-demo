@@ -106261,7 +106261,8 @@ Vue.component('profile-edit-profile-form', {
         activated: false,
         forbidden: false,
         language: ''
-      }
+      },
+      mediaCollections: ['avatar']
     };
   },
   methods: {
