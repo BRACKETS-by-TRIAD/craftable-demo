@@ -13,7 +13,8 @@ Vue.component('profile-edit-profile-form', {
                 forbidden:  false ,
                 language:  '' ,
                 
-            }
+            },
+            mediaCollections: ['avatar']
         }
     },
     methods: {
