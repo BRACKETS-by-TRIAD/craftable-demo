@@ -1,8 +1,11 @@
 <?php
 
+use Brackets\AdminAuth\Models\AdminUser;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class FillDefaultAdminUserAndPermissions
@@ -181,6 +184,16 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 if (is_null($userItem)) {
                     $userId = DB::table($this->userTable)->insertGetId($user);
 
+
+                    $file = new Filesystem;
+                    $file->cleanDirectory(storage_path('/uploads'));
+                    $file->cleanDirectory(public_path('/media'));
+                    $file->cleanDirectory(storage_path('/app/media'));
+
+                    AdminUser::find($userId)->addMedia(public_path()."/images/vendor/craftable/avatar.png")
+                        ->preservingOriginal()
+                        ->toMediaCollection('avatar', 'media');
+
                     foreach ($roles as $role) {
                         $roleItem = DB::table('roles')->where([
                             'name' => $role['name'],
@@ -235,7 +248,11 @@ class FillDefaultAdminUserAndPermissions extends Migration
         DB::transaction(function () {
             foreach ($this->users as $user) {
                 $userItem = DB::table($this->userTable)->where('email', $user['email'])->first();
+
                 if (!is_null($userItem)) {
+
+                    AdminUser::find($userItem->id)->media()->delete();
+
                     DB::table($this->userTable)->where('id', $userItem->id)->delete();
                     DB::table('model_has_permissions')->where([
                         'model_id' => $userItem->id,
