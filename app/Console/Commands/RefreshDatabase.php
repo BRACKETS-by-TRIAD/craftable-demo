@@ -30,6 +30,8 @@ class RefreshDatabase extends Command
     {
         $this->call('down');
 
+        File::deleteDirectory(public_path('media'), true);
+
         $this->call('migrate:fresh', [
             '-n' => true,
             '--force' => true,
@@ -41,8 +43,6 @@ class RefreshDatabase extends Command
         ]);
 
         $this->call('cache:clear');
-
-        File::deleteDirectory(public_path('media'), true);
 
         $this->call('up');
     }
