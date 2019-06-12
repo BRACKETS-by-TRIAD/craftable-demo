@@ -46,6 +46,8 @@ return [
             'enabled' => "Enabled",
             
         ],
+
+        'sort' => 'Sort posts',
     ],
 
     'translatable-article' => [

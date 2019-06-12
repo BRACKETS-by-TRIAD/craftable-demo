@@ -16,6 +16,7 @@ import './app-components/bootstrap';
 import './index';
 
 import 'craftable/dist/ui';
+require('./vendor/sortable/app');
 
 Vue.component('multiselect', Multiselect);
 Vue.use(VeeValidate, {strict: true});

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9adced9f2e8c25fc0f87b9906ca8cceb",
+    "content-hash": "2ef8cf2b687cf77e7c6723bf06de1060",
     "packages": [
         {
             "name": "brackets/admin-auth",
@@ -143,6 +143,59 @@
                 "listing"
             ],
             "time": "2019-01-07T09:24:37+00:00"
+        },
+        {
+            "name": "brackets/admin-sortable",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BRACKETS-by-TRIAD/admin-sortable.git",
+                "reference": "b09c3968eea918a61b148e9a622cd0717a733e6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BRACKETS-by-TRIAD/admin-sortable/zipball/b09c3968eea918a61b148e9a622cd0717a733e6b",
+                "reference": "b09c3968eea918a61b148e9a622cd0717a733e6b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "project",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Brackets\\AdminSortable\\SortableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Brackets\\AdminSortable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Branislav Zavracky",
+                    "email": "branislav.zavracky@brackets.sk",
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
+                }
+            ],
+            "description": "listing of Eloquent models",
+            "keywords": [
+                "admin",
+                "cms",
+                "datatable",
+                "laravel",
+                "sorting",
+                "vue"
+            ],
+            "time": "2019-03-07T09:41:41+00:00"
         },
         {
             "name": "brackets/admin-translations",
