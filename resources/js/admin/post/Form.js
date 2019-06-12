@@ -9,6 +9,7 @@ Vue.component('post-form', {
                 perex:  '' ,
                 published_at:  '' ,
                 enabled:  false ,
+                author_id: '',
                 
             },
             mediaCollections: ['cover', 'gallery', 'pdf']

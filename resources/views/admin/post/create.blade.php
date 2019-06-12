@@ -3,56 +3,54 @@
 @section('title', trans('admin.post.actions.create'))
 
 @section('body')
+    <post-form
+            :action="'{{ url('admin/posts') }}'"
 
-    <div class="container-xl">
+            inline-template>
 
-        <div class="card">
+        <form class="form-horizontal form-create" method="post" @submit.prevent="onSubmit" :action="this.action"
+              novalidate>
+            <div class="row">
+                <div class="col">
+                    @include('admin.post.components.form-elements')
+                </div>
 
-            <post-form
-                :action="'{{ url('admin/posts') }}'"
-                
-                inline-template>
+                <div class="col-md-12 col-lg-12 col-xl-5 col-xxl-4">
+                    @include('admin.post.components.form-elements-right')
+                </div>
+            </div>
+            {{----}}
+            {{--<div class="card-header">--}}
+            {{--<i class="fa fa-plus"></i> {{ trans('admin.post.actions.create') }}--}}
+            {{--</div>--}}
 
-                <form class="form-horizontal form-create" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>
+            {{--<div class="card-body">--}}
 
-                    <div class="card-header">
-                        <i class="fa fa-plus"></i> {{ trans('admin.post.actions.create') }}
-                    </div>
+            {{--@include('admin.post.components.form-elements')--}}
 
-                    <div class="card-body">
+            {{--@include('brackets/admin-ui::admin.includes.media-uploader', [--}}
+            {{--'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('cover'),--}}
+            {{--'label' => 'Cover photo'--}}
+            {{--])--}}
 
-                        @include('admin.post.components.form-elements')
+            {{--@include('brackets/admin-ui::admin.includes.media-uploader', [--}}
+            {{--'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('gallery'),--}}
+            {{--'label' => 'Gallery of photos'--}}
+            {{--])--}}
 
-                        @include('brackets/admin-ui::admin.includes.media-uploader', [
-                            'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('cover'),
-                            'label' => 'Cover photo'
-                        ])
 
-                        @include('brackets/admin-ui::admin.includes.media-uploader', [
-                            'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('gallery'),
-                            'label' => 'Gallery of photos'
-                        ])
+            {{--</div>--}}
 
-                        @include('brackets/admin-ui::admin.includes.media-uploader', [
-                            'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('pdf'),
-                            'label' => 'PDF appendix'
-                        ])
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" :disabled="submiting">
+                    <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
+                    {{ trans('brackets/admin-ui::admin.btn.save') }}
+                </button>
+            </div>
 
-                    </div>
+        </form>
 
-                    <div class="card-footer">
-	                    <button type="submit" class="btn btn-primary" :disabled="submiting">
-		                    <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
-		                    {{ trans('brackets/admin-ui::admin.btn.save') }}
-	                    </button>
-                    </div>
+    </post-form>
 
-                </form>
-
-            </post-form>
-
-        </div>
-
-    </div>
 
 @endsection
