@@ -18,6 +18,7 @@ class Post extends Model implements HasMediaCollections, HasMediaConversions
         "perex",
         "published_at",
         "enabled",
+        "author_id",
     
     ];
     

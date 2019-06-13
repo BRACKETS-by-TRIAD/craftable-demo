@@ -28,7 +28,8 @@ class UpdatePost extends FormRequest
             'perex' => ['nullable', 'string'],
             'published_at' => ['nullable', 'date'],
             'enabled' => ['sometimes', 'boolean'],
-            
+
+            'author_id' => ['required',],
         ];
     }
 }

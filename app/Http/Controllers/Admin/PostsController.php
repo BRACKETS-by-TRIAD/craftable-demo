@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\Admin\Post\IndexPost;
@@ -51,7 +52,9 @@ class PostsController extends Controller
     {
         $this->authorize('admin.post.create');
 
-        return view('admin.post.create');
+        return view('admin.post.create', [
+            'authors' => Author::all(),
+        ]);
     }
 
     /**
@@ -102,6 +105,7 @@ class PostsController extends Controller
 
         return view('admin.post.edit', [
             'post' => $post,
+            'authors' => Author::all(),
         ]);
     }
 

@@ -6,7 +6,7 @@
 
     <div class="container-xl">
 
-        <div class="card">
+        {{--<div class="card">--}}
 
             <post-form
                 :action="'{{ $post->resource_url }}'"
@@ -15,32 +15,14 @@
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>
 
-                    <div class="card-header">
-                        <i class="fa fa-pencil"></i> {{ trans('admin.post.actions.edit', ['name' => $post->title]) }}
-                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @include('admin.post.components.form-elements')
+                        </div>
 
-                    <div class="card-body">
-
-                        @include('admin.post.components.form-elements')
-
-                        @include('brackets/admin-ui::admin.includes.media-uploader', [
-                            'mediaCollection' => $post->getMediaCollection('cover'),
-                            'media' => $post->getThumbs200ForCollection('cover'),
-                            'label' => 'Cover photo'
-                        ])
-
-                        @include('brackets/admin-ui::admin.includes.media-uploader', [
-                            'mediaCollection' => $post->getMediaCollection('gallery'),
-                            'media' => $post->getThumbs200ForCollection('gallery'),
-                            'label' => 'Gallery of photos'
-                        ])
-
-                        @include('brackets/admin-ui::admin.includes.media-uploader', [
-                            'mediaCollection' => $post->getMediaCollection('pdf'),
-                            'media' => $post->getThumbs200ForCollection('pdf'),
-                            'label' => 'PDF appendix'
-                        ])
-
+                        <div class="col-md-12 col-lg-12 col-xl-5 col-xxl-4">
+                            @include('admin.post.components.form-elements-right')
+                        </div>
                     </div>
 
                     <div class="card-footer">
@@ -54,7 +36,7 @@
 
         </post-form>
 
-    </div>
+    {{--</div>--}}
 
 </div>
 

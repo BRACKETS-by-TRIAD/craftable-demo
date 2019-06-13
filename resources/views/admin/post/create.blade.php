@@ -19,27 +19,6 @@
                     @include('admin.post.components.form-elements-right')
                 </div>
             </div>
-            {{----}}
-            {{--<div class="card-header">--}}
-            {{--<i class="fa fa-plus"></i> {{ trans('admin.post.actions.create') }}--}}
-            {{--</div>--}}
-
-            {{--<div class="card-body">--}}
-
-            {{--@include('admin.post.components.form-elements')--}}
-
-            {{--@include('brackets/admin-ui::admin.includes.media-uploader', [--}}
-            {{--'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('cover'),--}}
-            {{--'label' => 'Cover photo'--}}
-            {{--])--}}
-
-            {{--@include('brackets/admin-ui::admin.includes.media-uploader', [--}}
-            {{--'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('gallery'),--}}
-            {{--'label' => 'Gallery of photos'--}}
-            {{--])--}}
-
-
-            {{--</div>--}}
 
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary" :disabled="submiting">
