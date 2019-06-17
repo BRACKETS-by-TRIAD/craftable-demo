@@ -152,14 +152,12 @@ class PostsController extends Controller
      */
     public function sortIndex()
     {
-        $data = Post::orderBy('order_column', 'asc')->get(['id', 'title'])
-
-            ->map(function ($item) {
-                return [
-                    'id' => $item->getKey(),
-                    'title' => $item->title,
-                ];
-            });
+        $data = Post::orderBy('order_column', 'asc')->get(['id', 'title'])->map(function ($item) {
+            return [
+                'id' => $item->getKey(),
+                'title' => $item->title,
+            ];
+        });
 
         return view('admin.post.sortable-listing', compact('data'));
     }
@@ -168,11 +166,11 @@ class PostsController extends Controller
      * @param Request $request
      * @return array
      */
-    public function sortUpdate(Request $request) : array
+    public function sortUpdate(Request $request): array
     {
-        foreach ($request['sortable_array'] as $key => $item) {
+        collect($request['sortable_array'])->each(function($item, $key) {
             Post::where('id', $item['id'])->update(['order_column' => $key + 1]);
-        }
+        });
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/posts'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
