@@ -52,15 +52,28 @@
             </div>
         </div>
 
-        @include('brackets/admin-ui::admin.includes.media-uploader', [
-            'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('gallery'),
-            'label' => 'Gallery of photos'
-        ])
+        @if ($mode === 'create')
+            @include('brackets/admin-ui::admin.includes.media-uploader', [
+                'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('gallery'),
+                'label' => 'Gallery of photos'
+            ])
+            @include('brackets/admin-ui::admin.includes.media-uploader', [
+                'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('pdf'),
+                'label' => 'PDF appendix'
+            ])
+        @else
+            @include('brackets/admin-ui::admin.includes.media-uploader', [
+               'mediaCollection' => $post->getMediaCollection('gallery'),
+               'media' => $post->getThumbs200ForCollection('gallery'),
+               'label' => 'Gallery of photos'
+           ])
+            @include('brackets/admin-ui::admin.includes.media-uploader', [
+                'mediaCollection' => $post->getMediaCollection('pdf'),
+                'media' => $post->getThumbs200ForCollection('pdf'),
+                'label' => 'PDF appendix'
+            ])
 
-        @include('brackets/admin-ui::admin.includes.media-uploader', [
-            'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('pdf'),
-            'label' => 'PDF appendix'
-        ])
+        @endif
     </div>
 
 </div>

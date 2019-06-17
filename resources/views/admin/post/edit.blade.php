@@ -6,38 +6,35 @@
 
     <div class="container-xl">
 
-        {{--<div class="card">--}}
-
-            <post-form
+        <post-form
                 :action="'{{ $post->resource_url }}'"
                 :data="{{ $post->toJson() }}"
                 inline-template>
-            
-                <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>
 
-                    <div class="row">
-                        <div class="col">
-                            @include('admin.post.components.form-elements')
-                        </div>
+            <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action"
+                  novalidate>
 
-                        <div class="col-md-12 col-lg-12 col-xl-5 col-xxl-4">
-                            @include('admin.post.components.form-elements-right')
-                        </div>
+                <div class="row">
+                    <div class="col">
+                        @include('admin.post.components.form-elements')
                     </div>
 
-                    <div class="card-footer">
-	                    <button type="submit" class="btn btn-primary" :disabled="submiting">
-		                    <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
-		                    {{ trans('brackets/admin-ui::admin.btn.save') }}
-	                    </button>
+                    <div class="col-md-12 col-lg-12 col-xl-5 col-xxl-4">
+                        @include('admin.post.components.form-elements-right')
                     </div>
+                </div>
 
-                </form>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary" :disabled="submiting">
+                        <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
+                        {{ trans('brackets/admin-ui::admin.btn.save') }}
+                    </button>
+                </div>
+
+            </form>
 
         </post-form>
 
-    {{--</div>--}}
-
-</div>
+    </div>
 
 @endsection

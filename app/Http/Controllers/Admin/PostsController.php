@@ -54,6 +54,7 @@ class PostsController extends Controller
 
         return view('admin.post.create', [
             'authors' => Author::all(),
+            'mode' => 'create',
         ]);
     }
 
@@ -106,6 +107,7 @@ class PostsController extends Controller
         return view('admin.post.edit', [
             'post' => $post,
             'authors' => Author::all(),
+            'mode' => 'edit',
         ]);
     }
 
