@@ -43,6 +43,9 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::get('/admin/posts/{post}/edit',                      'Admin\PostsController@edit')->name('admin/posts/edit');
     Route::post('/admin/posts/{post}',                          'Admin\PostsController@update')->name('admin/posts/update');
     Route::delete('/admin/posts/{post}',                        'Admin\PostsController@destroy')->name('admin/posts/destroy');
+
+    Route::get('/admin/sort/posts', 'Admin\PostsController@sortIndex')->name('admin/posts/sort');
+    Route::post('/admin/update-order/posts', 'Admin\PostsController@sortUpdate')->name('admin/posts/sort/update');
 });
 
 /* Auto-generated admin routes */

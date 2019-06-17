@@ -1,15 +1,16 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Post\DestroyPost;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\Admin\Post\IndexPost;
 use App\Http\Requests\Admin\Post\StorePost;
 use App\Http\Requests\Admin\Post\UpdatePost;
-use App\Http\Requests\Admin\Post\DestroyPost;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Post;
+use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Contracts\View\Factory;
 
 class PostsController extends Controller
 {
@@ -24,7 +25,7 @@ class PostsController extends Controller
     {
         // create and AdminListing instance for a specific model and
         $data = AdminListing::create(Post::class)->processRequestAndGet(
-            // pass the request with params
+        // pass the request with params
             $request,
 
             // set columns to query
@@ -152,4 +153,33 @@ class PostsController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @return Factory
+     */
+    public function sortIndex()
+    {
+        $data = Post::orderBy('order_column', 'asc')->get(['id', 'title'])->map(function ($item) {
+            return [
+                'id' => $item->getKey(),
+                'title' => $item->title,
+            ];
+        });
+
+        return view('admin.post.sortable-listing', compact('data'));
     }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function sortUpdate(Request $request): array
+    {
+        collect($request['sortable_array'])->each(function($item, $key) {
+            Post::where('id', $item['id'])->update(['order_column' => $key + 1]);
+        });
+
+        if ($request->ajax()) {
+            return ['redirect' => url('admin/posts'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+        }
+    }
+}

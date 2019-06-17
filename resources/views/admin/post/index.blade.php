@@ -28,7 +28,11 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-auto form-group ">
+                                <div class="col col-lg-2 col-xl-6 form-group">
+                                    <a href="{{ route('admin/posts/sort') }}" class="btn btn-primary">{{ trans("admin.post.sort") }}</a>
+                                </div>
+
+                                <div class="col-sm-auto pull-right form-group ">
                                     <select class="form-control" v-model="pagination.state.per_page">
                                         
                                         <option value="10">10</option>
