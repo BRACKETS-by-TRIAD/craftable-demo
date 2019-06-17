@@ -18,6 +18,7 @@ class Post extends Model implements HasMediaCollections, HasMediaConversions
         "perex",
         "published_at",
         "enabled",
+        "author_id",
     
     ];
     
@@ -59,5 +60,10 @@ class Post extends Model implements HasMediaCollections, HasMediaConversions
         $this->autoRegisterThumb200();
     }
 
-    
+    /* ************************ RELATIONS ************************* */
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
 }

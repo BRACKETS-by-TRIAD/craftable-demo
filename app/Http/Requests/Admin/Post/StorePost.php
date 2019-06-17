@@ -28,6 +28,8 @@ class StorePost extends FormRequest
             'perex' => ['nullable', 'string'],
             'published_at' => ['nullable', 'date'],
             'enabled' => ['required', 'boolean'],
+
+            'author_id' => ['required',],
             
         ];
     }

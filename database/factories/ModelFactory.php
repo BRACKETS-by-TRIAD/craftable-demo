@@ -16,7 +16,20 @@ $factory->define(Brackets\AdminAuth\Models\AdminUser::class, function (Faker\Gen
         'updated_at' => $faker->dateTime,
         
     ];
-});/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+});
+
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Author::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->firstName . ' ' . $faker->lastName,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+
+
+    ];
+});
+
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence,
@@ -25,7 +38,7 @@ $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
         'enabled' => $faker->boolean(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        
+        'author_id' => factory(App\Models\Author::class)->create()->id,
         
     ];
 });
