@@ -29,7 +29,7 @@ class UpdatePost extends FormRequest
             'published_at' => ['nullable', 'date'],
             'enabled' => ['sometimes', 'boolean'],
 
-            'author_id' => ['required',],
+            'author_id' => ['nullable',],
         ];
     }
 }
