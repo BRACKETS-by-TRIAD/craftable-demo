@@ -20,12 +20,10 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary" :disabled="submiting">
-                    <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-download'"></i>
-                    {{ trans('brackets/admin-ui::admin.btn.save') }}
-                </button>
-            </div>
+            <button type="submit" class="btn btn-primary fixed-cta-button" :disabled="submiting">
+                <i class="fa" :class="submiting ? 'fa-spinner' : 'fa-save'"></i>
+                {{ trans('brackets/admin-ui::admin.btn.save') }}
+            </button>
 
         </form>
 
