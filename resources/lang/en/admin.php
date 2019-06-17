@@ -44,7 +44,7 @@ return [
             'perex' => "Perex",
             'published_at' => "Published at",
             'enabled' => "Enabled",
-            
+            'author_id' => "Author",
         ],
 
         'sort' => 'Sort posts',

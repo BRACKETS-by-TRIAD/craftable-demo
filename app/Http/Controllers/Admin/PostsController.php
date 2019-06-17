@@ -2,14 +2,15 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\DestroyPost;
+use App\Models\Author;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Requests\Admin\Post\IndexPost;
 use App\Http\Requests\Admin\Post\StorePost;
 use App\Http\Requests\Admin\Post\UpdatePost;
 use App\Models\Post;
 use Brackets\AdminListing\Facades\AdminListing;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\Response;
-use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -52,7 +53,10 @@ class PostsController extends Controller
     {
         $this->authorize('admin.post.create');
 
-        return view('admin.post.create');
+        return view('admin.post.create', [
+            'authors' => Author::all(),
+            'mode' => 'create',
+        ]);
     }
 
     /**
@@ -103,6 +107,8 @@ class PostsController extends Controller
 
         return view('admin.post.edit', [
             'post' => $post,
+            'authors' => Author::all(),
+            'mode' => 'edit',
         ]);
     }
 

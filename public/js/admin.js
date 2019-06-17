@@ -113822,7 +113822,8 @@ Vue.component('post-form', {
         title: '',
         perex: '',
         published_at: '',
-        enabled: false
+        enabled: false,
+        author_id: ''
       },
       mediaCollections: ['cover', 'gallery', 'pdf']
     };
