@@ -51,18 +51,3 @@
 
     </div>
 </div>
-
-<div class="card">
-    @if($mode === 'edit')
-        @include('brackets/admin-ui::admin.includes.media-uploader', [
-            'mediaCollection' => $post->getMediaCollection('cover'),
-            'media' => $post->getThumbs200ForCollection('cover'),
-            'label' => 'Cover photo'
-        ])
-    @else
-        @include('brackets/admin-ui::admin.includes.media-uploader', [
-            'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('cover'),
-            'label' => 'Cover photo'
-        ])
-    @endif
-</div>

@@ -26,3 +26,18 @@
     font-size: 13px;
   }
 }
+
+.switch-filter-wrap{
+  vertical-align: middle !important;
+  padding: 6px 0 6px 10px;
+  display: inline-block !important;
+
+  .switch {
+    margin: 0;
+  }
+}
+
+.authors-filter {
+  position: relative;
+  bottom: 8px;
+}

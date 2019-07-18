@@ -5,3 +5,4 @@ import './post';
 import './translatable-article';
 import './article';
 import './export';
+import './articles-with-relationship';
