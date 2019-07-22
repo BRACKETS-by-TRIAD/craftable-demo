@@ -23408,17 +23408,17 @@ div.trumbowyg-dropdown-table table td.active {
 }
 
 .github-link {
-  left: -30px;
+  left: -109px;
   top: 0;
   position: absolute;
 }
 
-.github-link i {
-  font-size: 2.5em;
-  color: #000000 !important;
+.github-link img {
+  height: 35px;
+  width: auto;
 }
 
-@media (max-width: 766px) {
+@media (max-width: 850px) {
   .app-header.navbar .navbar-brand {
     display: none;
   }

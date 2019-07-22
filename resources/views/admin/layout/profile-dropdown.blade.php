@@ -1,6 +1,10 @@
 <div class="github-link">
+    
+    
+    
     <a href="https://github.com/BRACKETS-by-TRIAD/craftable-demo" target="_blank">
-        <i class="fa fa-github" aria-hidden="true"></i>
+        {{--<i class="fa fa-github" aria-hidden="true"></i>--}}
+        <img src="{{url('/images/vendor/craftable/GitHub_Logo.png')}}" alt="">
     </a>
 </div>
 
