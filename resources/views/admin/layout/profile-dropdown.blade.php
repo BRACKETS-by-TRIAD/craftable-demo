@@ -1,3 +1,9 @@
+<div class="github-link">
+    <a href="https://github.com/BRACKETS-by-TRIAD/craftable-demo" target="_blank">
+        <i class="fa fa-github" aria-hidden="true"></i>
+    </a>
+</div>
+
 <div class="dropdown-menu dropdown-menu-right">
     <div class="dropdown-header text-center"><strong>{{ trans('brackets/admin-ui::admin.profile_dropdown.account') }}</strong></div>
     <a href="{{ url('admin/profile') }}" class="dropdown-item"><i class="fa fa-user"></i> Profile</a>

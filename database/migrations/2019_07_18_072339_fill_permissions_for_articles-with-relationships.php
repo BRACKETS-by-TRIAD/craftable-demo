@@ -26,12 +26,12 @@ class FillPermissionsForArticlesWithRelationships extends Migration
         $this->guardName = config('admin-auth.defaults.guard');
 
         $permissions = collect([
-            'admin.articles-with-relationships',
-            'admin.articles-with-relationships.index',
-            'admin.articles-with-relationships.create',
-            'admin.articles-with-relationships.show',
-            'admin.articles-with-relationships.edit',
-            'admin.articles-with-relationships.delete',
+            'admin.articles-with-relationship',
+            'admin.articles-with-relationship.index',
+            'admin.articles-with-relationship.create',
+            'admin.articles-with-relationship.show',
+            'admin.articles-with-relationship.edit',
+            'admin.articles-with-relationship.delete',
         ]);
 
         //Add New permissions
