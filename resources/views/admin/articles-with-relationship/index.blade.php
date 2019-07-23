@@ -73,7 +73,7 @@
                                     <th is='sortable' :column="'title'">{{ trans('admin.articles-with-relationship.columns.title') }}</th>
                                     <th is='sortable' :column="'published_at'">{{ trans('admin.articles-with-relationship.columns.published_at') }}</th>
                                     <th is='sortable' :column="'enabled'">{{ trans('admin.articles-with-relationship.columns.enabled') }}</th>
-                                    <th is='sortable' :column="'author_id'">{{ trans('admin.articles-with-relationship.columns.author_id') }}</th>
+                                    <th :column="'author_id'">{{ trans('admin.articles-with-relationship.columns.author_id') }}</th>
                                     
                                     <th></th>
                                 </tr>
