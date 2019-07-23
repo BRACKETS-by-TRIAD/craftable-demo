@@ -28,8 +28,15 @@ class StoreArticlesWithRelationship extends FormRequest
             'perex' => ['nullable', 'string'],
             'published_at' => ['nullable', 'date'],
             'enabled' => ['required', 'boolean'],
-            'author_id' => ['required'],
+            'author' => ['required'],
             
         ];
+    }
+
+    public function getAuthorId(){
+        if ($this->has('author')){
+            return $this->get('author')['id'];
+        }
+        return null;
     }
 }

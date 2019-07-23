@@ -25,6 +25,8 @@ class ArticlesWithRelationship extends Model
         "updated_at",
     
     ];
+
+    protected $with = ['author'];
     
     protected $appends = ['resource_url'];
 

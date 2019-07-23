@@ -9,6 +9,7 @@
             <articles-with-relationship-form
                 :action="'{{ $articlesWithRelationship->resource_url }}'"
                 :data="{{ $articlesWithRelationship->toJson() }}"
+                :authors="{{$authors->toJson()}}"
                 inline-template>
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>

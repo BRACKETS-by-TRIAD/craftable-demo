@@ -81,6 +81,8 @@ class ArticlesWithRelationshipController extends Controller
         // Sanitize input
         $sanitized = $request->validated();
 
+        $sanitized['author_id'] = $request->getAuthorId();
+
         // Store the ArticlesWithRelationship
         $articlesWithRelationship = ArticlesWithRelationship::create($sanitized);
 
@@ -133,6 +135,8 @@ class ArticlesWithRelationshipController extends Controller
     {
         // Sanitize input
         $sanitized = $request->validated();
+
+        $sanitized['author_id'] = $request->getAuthorId();
 
         // Update changed values ArticlesWithRelationship
         $articlesWithRelationship->update($sanitized);

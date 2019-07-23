@@ -28,8 +28,15 @@ class UpdateArticlesWithRelationship extends FormRequest
             'perex' => ['nullable', 'string'],
             'published_at' => ['nullable', 'date'],
             'enabled' => ['sometimes', 'boolean'],
-            'author_id' => ['nullable'],
+            'author' => ['required'],
             
         ];
+    }
+
+    public function getAuthorId(){
+        if ($this->has('author')){
+            return $this->get('author')['id'];
+        }
+        return null;
     }
 }
