@@ -108,5 +108,25 @@ return [
         ],
     ],
 
+    'articles-with-relationship' => [
+        'title' => 'Articles With Relationship',
+
+        'actions' => [
+            'index' => 'Articles With Relationship',
+            'create' => 'New Article With Relationship',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'title' => "Title",
+            'perex' => "Perex",
+            'published_at' => "Published at",
+            'enabled' => "Enabled",
+            'author_id' => "Author",
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

@@ -78,3 +78,13 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::delete('/admin/exports/{export}',                    'Admin\ExportsController@destroy')->name('admin/exports/destroy');
     Route::get('/admin/exports/export',                         'Admin\ExportsController@export')->name('admin/exports/export');
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(function () {
+    Route::get('/admin/articles-with-relationships',            'Admin\ArticlesWithRelationshipController@index');
+    Route::get('/admin/articles-with-relationships/create',     'Admin\ArticlesWithRelationshipController@create');
+    Route::post('/admin/articles-with-relationships',           'Admin\ArticlesWithRelationshipController@store');
+    Route::get('/admin/articles-with-relationships/{articlesWithRelationship}/edit','Admin\ArticlesWithRelationshipController@edit')->name('admin/articles-with-relationships/edit');
+    Route::post('/admin/articles-with-relationships/{articlesWithRelationship}','Admin\ArticlesWithRelationshipController@update')->name('admin/articles-with-relationships/update');
+    Route::delete('/admin/articles-with-relationships/{articlesWithRelationship}','Admin\ArticlesWithRelationshipController@destroy')->name('admin/articles-with-relationships/destroy');
+});

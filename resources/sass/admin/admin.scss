@@ -26,3 +26,35 @@
     font-size: 13px;
   }
 }
+
+.switch-filter-wrap{
+  vertical-align: middle !important;
+  padding: 6px 0 6px 10px;
+  display: inline-block !important;
+
+  .switch {
+    margin: 0;
+  }
+}
+
+.authors-filter {
+  position: relative;
+  bottom: 8px;
+}
+
+.github-link {
+  left: -109px;
+  top: 0;
+  position: absolute;
+}
+
+.github-link img {
+  height: 35px;
+  width: auto;
+}
+
+@media (max-width: 850px) {
+  .app-header.navbar .navbar-brand {
+    display: none;
+  }
+}

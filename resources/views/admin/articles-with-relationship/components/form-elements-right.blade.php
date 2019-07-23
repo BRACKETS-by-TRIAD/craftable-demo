@@ -37,11 +37,16 @@
             <label for="author_id"
                    class="col-form-label text-center col-md-4 col-lg-3">{{ trans('admin.post.columns.author_id') }}</label>
             <div class="col-md-8 col-lg-9">
-                <select v-model="form.author_id" @input="validate($event)" class="form-control" name="author_id">
-                    @foreach($authors as $author)
-                        <option value="{{ $author->id}}">{{$author->title}}</option>
-                    @endforeach
-                </select>
+
+                <multiselect
+                        v-model="form.author"
+                        :options="authors"
+                        :multiple="false"
+                        track-by="id"
+                        label="full_name"
+                        tag-placeholder="{{ __('Select Author') }}"
+                        placeholder="{{ __('Author') }}">
+                </multiselect>
 
                 <div v-if="errors.has('author_id')" class="form-control-feedback form-text" v-cloak>@{{
                     errors.first('author_id') }}
@@ -50,19 +55,4 @@
         </div>
 
     </div>
-</div>
-
-<div class="card">
-    @if($mode === 'edit')
-        @include('brackets/admin-ui::admin.includes.media-uploader', [
-            'mediaCollection' => $post->getMediaCollection('cover'),
-            'media' => $post->getThumbs200ForCollection('cover'),
-            'label' => 'Cover photo'
-        ])
-    @else
-        @include('brackets/admin-ui::admin.includes.media-uploader', [
-            'mediaCollection' => app(App\Models\Post::class)->getMediaCollection('cover'),
-            'label' => 'Cover photo'
-        ])
-    @endif
 </div>
