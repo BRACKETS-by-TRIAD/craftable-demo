@@ -1,6 +1,9 @@
 <?php
 
 /** @var  \Illuminate\Database\Eloquent\Factory $factory */
+
+use App\Models\Author;
+
 $factory->define(Brackets\AdminAuth\Models\AdminUser::class, function (Faker\Generator $faker) {
     return [
         'first_name' => $faker->firstName,
@@ -14,7 +17,7 @@ $factory->define(Brackets\AdminAuth\Models\AdminUser::class, function (Faker\Gen
         'deleted_at' => null,
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        
+
     ];
 });
 
@@ -31,6 +34,10 @@ $factory->define(App\Models\Author::class, function (Faker\Generator $faker) {
 
 /** @var  \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+    if (Author::count() > 0) {
+        $author = Author::inRandomOrder()->first();
+    }
+
     return [
         'title' => $faker->sentence,
         'perex' => $faker->text(),
@@ -38,8 +45,8 @@ $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
         'enabled' => $faker->boolean(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        'author_id' => factory(App\Models\Author::class)->create()->id,
-        
+        'author_id' => isset($author) ? $author->id : null,
+
     ];
 });
 
@@ -61,7 +68,7 @@ $factory->define(App\Models\TranslatableArticle::class, function (Faker\Generato
             'de' => $faker->text(),
             'fr' => $faker->text(),
         ],
-        
+
     ];
 });
 
@@ -74,8 +81,8 @@ $factory->define(App\Models\Article::class, function (Faker\Generator $faker) {
         'enabled' => $faker->boolean(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        
-        
+
+
     ];
 });
 
@@ -88,13 +95,18 @@ $factory->define(App\Models\Export::class, function (Faker\Generator $faker) {
         'enabled' => $faker->boolean(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        
-        
+
+
     ];
 });
 
 /** @var  \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\ArticlesWithRelationship::class, function (Faker\Generator $faker) {
+
+    if (Author::count() > 0) {
+        $author = Author::inRandomOrder()->first();
+    }
+
     return [
         'title' => $faker->sentence,
         'perex' => $faker->text(),
@@ -102,7 +114,7 @@ $factory->define(App\Models\ArticlesWithRelationship::class, function (Faker\Gen
         'enabled' => $faker->boolean(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        'author_id' => factory(App\Models\Author::class)->create()->id,
+        'author_id' => isset($author) ? $author->id : null,
 
 
     ];
