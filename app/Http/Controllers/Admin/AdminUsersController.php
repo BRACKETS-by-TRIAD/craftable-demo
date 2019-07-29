@@ -173,10 +173,8 @@ class AdminUsersController extends Controller
      */
     public function destroy(DestroyAdminUser $request, AdminUser $adminUser)
     {
-        $adminUser->delete();
-
         if ($request->ajax()) {
-            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+            return response(['message' => 'Although, you cannot delete an user in demo.']);
         }
 
         return redirect()->back();
@@ -216,5 +214,5 @@ class AdminUsersController extends Controller
             return redirect()->back();
         }
     }
-    
+
     }

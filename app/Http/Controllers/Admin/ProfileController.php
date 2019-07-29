@@ -27,7 +27,8 @@ class ProfileController extends Controller
      *
      * @param  Request $request
      */
-    protected function setUser($request) {
+    protected function setUser($request)
+    {
         if (empty($request->user($this->guard))) {
             abort(404, 'Admin User not found');
         }
@@ -53,7 +54,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param        \Illuminate\Http\Request  $request
+     * @param        \Illuminate\Http\Request $request
      * @return    \Illuminate\Http\Response|array
      */
     public function updateProfile(Request $request)
@@ -66,7 +67,7 @@ class ProfileController extends Controller
             'first_name' => ['nullable', 'string'],
             'last_name' => ['nullable', 'string'],
             'language' => ['sometimes', 'string'],
-            
+
         ]);
 
         // Sanitize input
@@ -74,7 +75,7 @@ class ProfileController extends Controller
             'first_name',
             'last_name',
             'language',
-            
+
         ]);
 
         // Update changed values AdminUser
@@ -106,31 +107,12 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param        \Illuminate\Http\Request  $request
+     * @param        \Illuminate\Http\Request $request
      * @return    \Illuminate\Http\Response|array
      */
     public function updatePassword(Request $request)
     {
         $this->setUser($request);
-        $adminUser = $this->adminUser;
-
-        // Validate the request
-        $this->validate($request, [
-            'password' => ['sometimes', 'confirmed', 'min:7', 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9]).*$/', 'string'],
-            
-        ]);
-
-        // Sanitize input
-        $sanitized = $request->only([
-            'password',
-            
-        ]);
-
-        //Modify input, set hashed password
-        $sanitized['password'] = Hash::make($sanitized['password']);
-
-        // Update changed values AdminUser
-        $this->adminUser->update($sanitized);
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/password'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
