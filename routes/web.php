@@ -88,3 +88,14 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::post('/admin/articles-with-relationships/{articlesWithRelationship}','Admin\ArticlesWithRelationshipController@update')->name('admin/articles-with-relationships/update');
     Route::delete('/admin/articles-with-relationships/{articlesWithRelationship}','Admin\ArticlesWithRelationshipController@destroy')->name('admin/articles-with-relationships/destroy');
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(function () {
+    Route::get('/admin/bulk-actions',                           'Admin\BulkActionsController@index');
+    Route::get('/admin/bulk-actions/create',                    'Admin\BulkActionsController@create');
+    Route::post('/admin/bulk-actions',                          'Admin\BulkActionsController@store');
+    Route::get('/admin/bulk-actions/{bulkAction}/edit',         'Admin\BulkActionsController@edit')->name('admin/bulk-actions/edit');
+    Route::post('/admin/bulk-actions/bulk-destroy',             'Admin\BulkActionsController@bulkDestroy')->name('admin/bulk-actions/bulk-destroy');
+    Route::post('/admin/bulk-actions/{bulkAction}',             'Admin\BulkActionsController@update')->name('admin/bulk-actions/update');
+    Route::delete('/admin/bulk-actions/{bulkAction}',           'Admin\BulkActionsController@destroy')->name('admin/bulk-actions/destroy');
+});

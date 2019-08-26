@@ -23273,7 +23273,7 @@ div.trumbowyg-dropdown-table table td.active {
   width: 56px;
   height: 56px;
   border-radius: 56px;
-  font-size: 14px;
+  font-size: 12px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -23281,6 +23281,34 @@ div.trumbowyg-dropdown-table table td.active {
   display: block;
   margin-bottom: 2px;
   font-size: 13px;
+}
+
+.user-info-span {
+  color: #536c79;
+  font-size: 0.8rem;
+  margin: 5px 0 0 0;
+}
+
+.bulk-checkbox {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.bulk-info {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.bulk-checkbox label {
+  display: inline !important;
+}
+
+.bg-bulk {
+  background: #edf3fe;
+}
+
+.bg-bulk-info {
+  background: #b9c8de;
 }
 
 .input-group-addon {
