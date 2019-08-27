@@ -12,6 +12,7 @@
                 :action="'{{ $adminUser->resource_url }}'"
                 :data="{{ $adminUser->toJson() }}"
                 :activation="!!'{{ $activation }}'"
+                v-cloak
                 inline-template>
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action">

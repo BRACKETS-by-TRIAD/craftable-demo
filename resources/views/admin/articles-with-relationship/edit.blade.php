@@ -10,6 +10,7 @@
                 :action="'{{ $articlesWithRelationship->resource_url }}'"
                 :data="{{ $articlesWithRelationship->toJson() }}"
                 :authors="{{$authors->toJson()}}"
+                v-cloak
                 inline-template>
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>

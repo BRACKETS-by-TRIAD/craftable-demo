@@ -11,7 +11,7 @@
             <admin-user-form
                 :action="'{{ url('admin/admin-users') }}'"
                 :activation="!!'{{ $activation }}'"
-                
+                v-cloak
                 inline-template>
 
                 <form class="form-horizontal form-create" method="post" @submit.prevent="onSubmit" :action="this.action">
