@@ -1,14 +1,16 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Admin\TranslatableArticle\DestroyTranslatableArticle;
 use App\Http\Requests\Admin\TranslatableArticle\IndexTranslatableArticle;
 use App\Http\Requests\Admin\TranslatableArticle\StoreTranslatableArticle;
 use App\Http\Requests\Admin\TranslatableArticle\UpdateTranslatableArticle;
-use App\Http\Requests\Admin\TranslatableArticle\DestroyTranslatableArticle;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\TranslatableArticle;
+use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class TranslatableArticlesController extends Controller
 {
@@ -16,7 +18,7 @@ class TranslatableArticlesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  IndexTranslatableArticle $request
+     * @param IndexTranslatableArticle $request
      * @return Response|array
      */
     public function index(IndexTranslatableArticle $request)
@@ -38,14 +40,13 @@ class TranslatableArticlesController extends Controller
         }
 
         return view('admin.translatable-article.index', ['data' => $data]);
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function create()
     {
@@ -57,7 +58,7 @@ class TranslatableArticlesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreTranslatableArticle $request
+     * @param StoreTranslatableArticle $request
      * @return Response|array
      */
     public function store(StoreTranslatableArticle $request)
@@ -78,9 +79,9 @@ class TranslatableArticlesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  TranslatableArticle $translatableArticle
-     * @return void
+     * @param TranslatableArticle $translatableArticle
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
     public function show(TranslatableArticle $translatableArticle)
     {
@@ -92,9 +93,9 @@ class TranslatableArticlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  TranslatableArticle $translatableArticle
-     * @return Response
+     * @param TranslatableArticle $translatableArticle
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function edit(TranslatableArticle $translatableArticle)
     {
@@ -108,8 +109,8 @@ class TranslatableArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateTranslatableArticle $request
-     * @param  TranslatableArticle $translatableArticle
+     * @param UpdateTranslatableArticle $request
+     * @param TranslatableArticle $translatableArticle
      * @return Response|array
      */
     public function update(UpdateTranslatableArticle $request, TranslatableArticle $translatableArticle)
@@ -130,10 +131,10 @@ class TranslatableArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DestroyTranslatableArticle $request
-     * @param  TranslatableArticle $translatableArticle
-     * @return Response|bool
+     * @param DestroyTranslatableArticle $request
+     * @param TranslatableArticle $translatableArticle
      * @throws \Exception
+     * @return Response|bool
      */
     public function destroy(DestroyTranslatableArticle $request, TranslatableArticle $translatableArticle)
     {
@@ -145,5 +146,4 @@ class TranslatableArticlesController extends Controller
 
         return redirect()->back();
     }
-
-    }
+}

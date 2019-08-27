@@ -7,6 +7,7 @@
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/translatable-articles') }}"><i class="nav-icon icon-ghost"></i> #3: Translatable</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/exports') }}"><i class="nav-icon icon-drop"></i> #4: With export</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/articles-with-relationships') }}"><i class="nav-icon icon-graduation"></i> #5: With relationship</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/bulk-actions') }}"><i class="nav-icon icon-book-open"></i> #6: {{ trans('admin.bulk-action.title') }}</a></li>
            {{-- Do not delete me :) I'm used for auto-generation menu items --}}
 
             <li class="nav-title">{{ trans('brackets/admin-ui::admin.sidebar.settings') }}</li>

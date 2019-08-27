@@ -11,6 +11,7 @@
             <article-form
                 :action="'{{ $article->resource_url }}'"
                 :data="{{ $article->toJson() }}"
+                v-cloak
                 inline-template>
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>

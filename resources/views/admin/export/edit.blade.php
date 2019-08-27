@@ -11,6 +11,7 @@
             <export-form
                 :action="'{{ $export->resource_url }}'"
                 :data="{{ $export->toJson() }}"
+                v-cloak
                 inline-template>
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>

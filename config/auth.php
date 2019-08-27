@@ -73,7 +73,7 @@ return [
         'admin_users' => [
             'driver' => 'eloquent',
             'model' => Brackets\AdminAuth\Models\AdminUser::class,
-        ], 
+        ],
         
         'users' => [
             'driver' => 'eloquent',

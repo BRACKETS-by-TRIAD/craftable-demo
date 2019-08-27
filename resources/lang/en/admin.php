@@ -128,5 +128,25 @@ return [
         ],
     ],
 
+    'bulk-action' => [
+        'title' => 'Bulk Actions',
+
+        'actions' => [
+            'index' => 'Bulk Actions',
+            'create' => 'New Bulk Action',
+            'edit' => 'Edit :name',
+            'will_be_published' => 'BulkAction will be published at',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'title' => "Title",
+            'perex' => "Perex",
+            'published_at' => "Published at",
+            'enabled' => "Enabled",
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

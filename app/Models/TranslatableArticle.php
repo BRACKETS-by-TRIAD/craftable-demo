@@ -1,7 +1,9 @@
-<?php namespace App\Models;
+<?php
 
-use Illuminate\Database\Eloquent\Model;
+namespace App\Models;
+
 use Brackets\Translatable\Traits\HasTranslations;
+use Illuminate\Database\Eloquent\Model;
 
 class TranslatableArticle extends Model
 {
@@ -39,9 +41,8 @@ class TranslatableArticle extends Model
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute() {
+    public function getResourceUrlAttribute()
+    {
         return url('/admin/translatable-articles/'.$this->getKey());
     }
-
-    
 }

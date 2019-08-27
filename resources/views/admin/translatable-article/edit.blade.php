@@ -13,6 +13,7 @@
                 :data="{{ $translatableArticle->toJsonAllLocales() }}"
                 :locales="{{ json_encode($locales) }}"
                 :send-empty-locales="false"
+                v-cloak
                 inline-template>
             
                 <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>

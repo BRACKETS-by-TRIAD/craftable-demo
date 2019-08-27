@@ -102,7 +102,6 @@ $factory->define(App\Models\Export::class, function (Faker\Generator $faker) {
 
 /** @var  \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\ArticlesWithRelationship::class, function (Faker\Generator $faker) {
-
     if (Author::count() > 0) {
         $author = Author::inRandomOrder()->first();
     }
@@ -120,3 +119,16 @@ $factory->define(App\Models\ArticlesWithRelationship::class, function (Faker\Gen
     ];
 });
 
+/** @var  \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\BulkAction::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence,
+        'perex' => $faker->text(),
+        'published_at' => $faker->date(),
+        'enabled' => $faker->boolean(),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

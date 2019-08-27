@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Admin\ArticlesWithRelationship\DestroyArticlesWithRelationship;
 use App\Http\Requests\Admin\ArticlesWithRelationship\IndexArticlesWithRelationship;
 use App\Http\Requests\Admin\ArticlesWithRelationship\StoreArticlesWithRelationship;
 use App\Http\Requests\Admin\ArticlesWithRelationship\UpdateArticlesWithRelationship;
-use App\Http\Requests\Admin\ArticlesWithRelationship\DestroyArticlesWithRelationship;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\ArticlesWithRelationship;
 use App\Models\Author;
+use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ArticlesWithRelationshipController extends Controller
 {
@@ -19,7 +19,7 @@ class ArticlesWithRelationshipController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  IndexArticlesWithRelationship $request
+     * @param IndexArticlesWithRelationship $request
      * @return Response|array
      */
     public function index(IndexArticlesWithRelationship $request)
@@ -38,7 +38,7 @@ class ArticlesWithRelationshipController extends Controller
                 $query->with(['author']);
 
 
-                if($request->has('authors')){
+                if ($request->has('authors')) {
                     $query->whereIn('author_id', $request->get('authors'));
                 }
             }
@@ -52,14 +52,13 @@ class ArticlesWithRelationshipController extends Controller
             'data' => $data,
             'authors' => Author::all()
         ]);
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function create()
     {
@@ -73,7 +72,7 @@ class ArticlesWithRelationshipController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreArticlesWithRelationship $request
+     * @param StoreArticlesWithRelationship $request
      * @return Response|array
      */
     public function store(StoreArticlesWithRelationship $request)
@@ -96,9 +95,9 @@ class ArticlesWithRelationshipController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  ArticlesWithRelationship $articlesWithRelationship
-     * @return void
+     * @param ArticlesWithRelationship $articlesWithRelationship
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
     public function show(ArticlesWithRelationship $articlesWithRelationship)
     {
@@ -110,9 +109,9 @@ class ArticlesWithRelationshipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  ArticlesWithRelationship $articlesWithRelationship
-     * @return Response
+     * @param ArticlesWithRelationship $articlesWithRelationship
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function edit(ArticlesWithRelationship $articlesWithRelationship)
     {
@@ -127,8 +126,8 @@ class ArticlesWithRelationshipController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateArticlesWithRelationship $request
-     * @param  ArticlesWithRelationship $articlesWithRelationship
+     * @param UpdateArticlesWithRelationship $request
+     * @param ArticlesWithRelationship $articlesWithRelationship
      * @return Response|array
      */
     public function update(UpdateArticlesWithRelationship $request, ArticlesWithRelationship $articlesWithRelationship)
@@ -151,10 +150,10 @@ class ArticlesWithRelationshipController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DestroyArticlesWithRelationship $request
-     * @param  ArticlesWithRelationship $articlesWithRelationship
-     * @return Response|bool
+     * @param DestroyArticlesWithRelationship $request
+     * @param ArticlesWithRelationship $articlesWithRelationship
      * @throws \Exception
+     * @return Response|bool
      */
     public function destroy(DestroyArticlesWithRelationship $request, ArticlesWithRelationship $articlesWithRelationship)
     {
@@ -166,5 +165,4 @@ class ArticlesWithRelationshipController extends Controller
 
         return redirect()->back();
     }
-
-    }
+}

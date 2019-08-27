@@ -1,25 +1,26 @@
-<?php namespace App\Http\Requests\Admin\ArticlesWithRelationship;
+<?php
+
+namespace App\Http\Requests\Admin\ArticlesWithRelationship;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
 
 class StoreArticlesWithRelationship extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return  bool
+     * @return bool
      */
     public function authorize()
     {
         return Gate::allows('admin.articles-with-relationship.create');
     }
 
-/**
+    /**
      * Get the validation rules that apply to the request.
      *
-     * @return  array
+     * @return array
      */
     public function rules()
     {
@@ -33,8 +34,9 @@ class StoreArticlesWithRelationship extends FormRequest
         ];
     }
 
-    public function getAuthorId(){
-        if ($this->has('author')){
+    public function getAuthorId()
+    {
+        if ($this->has('author')) {
             return $this->get('author')['id'];
         }
         return null;

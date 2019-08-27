@@ -1,16 +1,18 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\DestroyPost;
-use App\Models\Author;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Requests\Admin\Post\IndexPost;
 use App\Http\Requests\Admin\Post\StorePost;
 use App\Http\Requests\Admin\Post\UpdatePost;
+use App\Models\Author;
 use App\Models\Post;
 use Brackets\AdminListing\Facades\AdminListing;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PostsController extends Controller
 {
@@ -18,7 +20,7 @@ class PostsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  IndexPost $request
+     * @param IndexPost $request
      * @return Response|array
      */
     public function index(IndexPost $request)
@@ -40,14 +42,13 @@ class PostsController extends Controller
         }
 
         return view('admin.post.index', ['data' => $data]);
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function create()
     {
@@ -62,7 +63,7 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StorePost $request
+     * @param StorePost $request
      * @return Response|array
      */
     public function store(StorePost $request)
@@ -83,9 +84,9 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Post $post
-     * @return void
+     * @param Post $post
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
     public function show(Post $post)
     {
@@ -97,9 +98,9 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Post $post
-     * @return Response
+     * @param Post $post
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function edit(Post $post)
     {
@@ -115,8 +116,8 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdatePost $request
-     * @param  Post $post
+     * @param UpdatePost $request
+     * @param Post $post
      * @return Response|array
      */
     public function update(UpdatePost $request, Post $post)
@@ -137,10 +138,10 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DestroyPost $request
-     * @param  Post $post
-     * @return Response|bool
+     * @param DestroyPost $request
+     * @param Post $post
      * @throws \Exception
+     * @return Response|bool
      */
     public function destroy(DestroyPost $request, Post $post)
     {
@@ -174,7 +175,7 @@ class PostsController extends Controller
      */
     public function sortUpdate(Request $request): array
     {
-        collect($request['sortable_array'])->each(function($item, $key) {
+        collect($request['sortable_array'])->each(function ($item, $key) {
             Post::where('id', $item['id'])->update(['order_column' => $key + 1]);
         });
 

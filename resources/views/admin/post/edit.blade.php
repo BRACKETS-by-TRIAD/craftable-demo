@@ -9,6 +9,7 @@
         <post-form
                 :action="'{{ $post->resource_url }}'"
                 :data="{{ $post->toJson() }}"
+                v-cloak
                 inline-template>
 
             <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="this.action"

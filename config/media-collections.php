@@ -2,7 +2,7 @@
 
 return [
     'public_disk' => 'media',
-	'private_disk' => 'media_private',
+    'private_disk' => 'media_private',
 
     /*
     |

@@ -9,6 +9,7 @@
             <articles-with-relationship-form
                 :action="'{{ url('admin/articles-with-relationships') }}'"
                 :authors="{{$authors->toJson()}}"
+                v-cloak
                 inline-template>
 
                 <form class="form-horizontal form-create" method="post" @submit.prevent="onSubmit" :action="this.action" novalidate>

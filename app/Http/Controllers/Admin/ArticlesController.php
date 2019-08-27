@@ -1,14 +1,16 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Admin\Article\DestroyArticle;
 use App\Http\Requests\Admin\Article\IndexArticle;
 use App\Http\Requests\Admin\Article\StoreArticle;
 use App\Http\Requests\Admin\Article\UpdateArticle;
-use App\Http\Requests\Admin\Article\DestroyArticle;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Article;
+use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ArticlesController extends Controller
 {
@@ -16,7 +18,7 @@ class ArticlesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  IndexArticle $request
+     * @param IndexArticle $request
      * @return Response|array
      */
     public function index(IndexArticle $request)
@@ -38,14 +40,13 @@ class ArticlesController extends Controller
         }
 
         return view('admin.article.index', ['data' => $data]);
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function create()
     {
@@ -57,7 +58,7 @@ class ArticlesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreArticle $request
+     * @param StoreArticle $request
      * @return Response|array
      */
     public function store(StoreArticle $request)
@@ -78,9 +79,9 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Article $article
-     * @return void
+     * @param Article $article
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
     public function show(Article $article)
     {
@@ -92,9 +93,9 @@ class ArticlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Article $article
-     * @return Response
+     * @param Article $article
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function edit(Article $article)
     {
@@ -108,8 +109,8 @@ class ArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateArticle $request
-     * @param  Article $article
+     * @param UpdateArticle $request
+     * @param Article $article
      * @return Response|array
      */
     public function update(UpdateArticle $request, Article $article)
@@ -130,10 +131,10 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DestroyArticle $request
-     * @param  Article $article
-     * @return Response|bool
+     * @param DestroyArticle $request
+     * @param Article $article
      * @throws \Exception
+     * @return Response|bool
      */
     public function destroy(DestroyArticle $request, Article $article)
     {
@@ -145,5 +146,4 @@ class ArticlesController extends Controller
 
         return redirect()->back();
     }
-
-    }
+}

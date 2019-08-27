@@ -1,15 +1,17 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
 
+namespace App\Http\Controllers\Admin;
+
+use App\Exports\ExportsExport;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Admin\Export\DestroyExport;
 use App\Http\Requests\Admin\Export\IndexExport;
 use App\Http\Requests\Admin\Export\StoreExport;
 use App\Http\Requests\Admin\Export\UpdateExport;
-use App\Http\Requests\Admin\Export\DestroyExport;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\Export;
-use App\Exports\ExportsExport;
+use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ExportsController extends Controller
@@ -18,7 +20,7 @@ class ExportsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  IndexExport $request
+     * @param IndexExport $request
      * @return Response|array
      */
     public function index(IndexExport $request)
@@ -40,14 +42,13 @@ class ExportsController extends Controller
         }
 
         return view('admin.export.index', ['data' => $data]);
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function create()
     {
@@ -59,7 +60,7 @@ class ExportsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreExport $request
+     * @param StoreExport $request
      * @return Response|array
      */
     public function store(StoreExport $request)
@@ -80,9 +81,9 @@ class ExportsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Export $export
-     * @return void
+     * @param Export $export
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
     public function show(Export $export)
     {
@@ -94,9 +95,9 @@ class ExportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Export $export
-     * @return Response
+     * @param Export $export
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function edit(Export $export)
     {
@@ -110,8 +111,8 @@ class ExportsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateExport $request
-     * @param  Export $export
+     * @param UpdateExport $request
+     * @param Export $export
      * @return Response|array
      */
     public function update(UpdateExport $request, Export $export)
@@ -132,10 +133,10 @@ class ExportsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DestroyExport $request
-     * @param  Export $export
-     * @return Response|bool
+     * @param DestroyExport $request
+     * @param Export $export
      * @throws \Exception
+     * @return Response|bool
      */
     public function destroy(DestroyExport $request, Export $export)
     {
@@ -149,8 +150,8 @@ class ExportsController extends Controller
     }
 
     /**
-    * Export entities
-    */
+     * Export entities
+     */
     public function export()
     {
         return Excel::download(new ExportsExport, 'exports.xlsx');
