@@ -9,8 +9,6 @@
         
         <bulk-action-form
             :action="'{{ url('admin/bulk-actions') }}'"
-             
-            
             v-cloak
             inline-template>
 
