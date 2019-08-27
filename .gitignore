@@ -11,3 +11,6 @@ npm-debug.log
 yarn-error.log
 .idea/
 .editorconfig
+
+.php_cs.cache
+cghooks.lock
