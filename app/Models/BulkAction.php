@@ -1,11 +1,11 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class BulkAction extends Model
 {
-    
-    
     protected $fillable = [
         "title",
         "perex",
@@ -31,9 +31,8 @@ class BulkAction extends Model
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute() {
+    public function getResourceUrlAttribute()
+    {
         return url('/admin/bulk-actions/'.$this->getKey());
     }
-
-    
 }

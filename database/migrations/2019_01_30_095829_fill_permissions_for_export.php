@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\DB;
 class FillPermissionsForExport extends Migration
 {
     /**
-     * @var  \Illuminate\Config\Repository|mixed
+     * @var \Illuminate\Config\Repository|mixed
      */
     protected $guardName;
     /**
-     * @var  array
+     * @var array
      */
     protected $permissions;
     /**
-     * @var  array
+     * @var array
      */
     protected $roles;
 
@@ -57,7 +57,7 @@ class FillPermissionsForExport extends Migration
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
     {
@@ -83,8 +83,10 @@ class FillPermissionsForExport extends Migration
                 if (!is_null($roleItem)) {
                     $roleId = $roleItem->id;
 
-                    $permissionItems = DB::table('permissions')->whereIn('name', $permissions)->where('guard_name',
-                        $role['guard_name'])->get();
+                    $permissionItems = DB::table('permissions')->whereIn('name', $permissions)->where(
+                        'guard_name',
+                        $role['guard_name']
+                    )->get();
                     foreach ($permissionItems as $permissionItem) {
                         $roleHasPermissionData = [
                             'permission_id' => $permissionItem->id,
@@ -104,7 +106,7 @@ class FillPermissionsForExport extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function down()
     {

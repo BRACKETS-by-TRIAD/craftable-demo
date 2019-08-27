@@ -5,10 +5,10 @@ namespace App\Models;
 use Brackets\Media\HasMedia\HasMediaCollections;
 use Brackets\Media\HasMedia\HasMediaCollectionsTrait;
 use Brackets\Media\HasMedia\HasMediaThumbsTrait;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 use Spatie\MediaLibrary\Media;
-use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model implements HasMediaCollections, HasMediaConversions
 {
@@ -35,7 +35,7 @@ class Author extends Model implements HasMediaCollections, HasMediaConversions
     {
         $nameArray = explode(" ", $this->title);
 
-        if(isset($nameArray[1])){
+        if (isset($nameArray[1])) {
             return mb_strtoupper(mb_substr($nameArray[0], 0, 1)) . mb_strtoupper(mb_substr($nameArray[1], 0, 1));
         }
 
@@ -46,7 +46,7 @@ class Author extends Model implements HasMediaCollections, HasMediaConversions
     {
         $nameArray = explode(" ", $this->title);
 
-        if(isset($nameArray[1])){
+        if (isset($nameArray[1])) {
             return $nameArray[0] . ' ' . $nameArray[1];
         }
 
@@ -57,7 +57,7 @@ class Author extends Model implements HasMediaCollections, HasMediaConversions
     {
         $nameArray = explode(" ", $this->title);
 
-        if(isset($nameArray[0])){
+        if (isset($nameArray[0])) {
             return $nameArray[0];
         }
 
@@ -68,7 +68,7 @@ class Author extends Model implements HasMediaCollections, HasMediaConversions
     {
         $nameArray = explode(" ", $this->title);
 
-        if(isset($nameArray[1])){
+        if (isset($nameArray[1])) {
             return $nameArray[1];
         }
 
@@ -79,7 +79,7 @@ class Author extends Model implements HasMediaCollections, HasMediaConversions
     {
         $nameArray = explode(" ", $this->title);
 
-        if(isset($nameArray[1])){
+        if (isset($nameArray[1])) {
             return  strtolower($nameArray[0]) . '.' . strtolower($nameArray[1]) . '@getcraftable.com';
         }
 
@@ -97,8 +97,8 @@ class Author extends Model implements HasMediaCollections, HasMediaConversions
     /* ************************ MEDIA ************************ */
 
     /**
-     * @return array|void
      * @throws \Brackets\Media\Exceptions\Collections\MediaCollectionAlreadyDefined
+     * @return array|void
      */
     public function registerMediaCollections()
     {

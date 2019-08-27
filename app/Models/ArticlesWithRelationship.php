@@ -32,14 +32,15 @@ class ArticlesWithRelationship extends Model
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute() {
+    public function getResourceUrlAttribute()
+    {
         return url('/admin/articles-with-relationships/'.$this->getKey());
     }
 
     /* ************************ RELATIONS ************************* */
 
-    public function author() {
+    public function author()
+    {
         return $this->belongsTo(Author::class);
     }
-
 }

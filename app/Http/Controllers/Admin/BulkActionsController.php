@@ -1,14 +1,16 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Admin\BulkAction\DestroyBulkAction;
 use App\Http\Requests\Admin\BulkAction\IndexBulkAction;
 use App\Http\Requests\Admin\BulkAction\StoreBulkAction;
 use App\Http\Requests\Admin\BulkAction\UpdateBulkAction;
-use App\Http\Requests\Admin\BulkAction\DestroyBulkAction;
-use Brackets\AdminListing\Facades\AdminListing;
 use App\Models\BulkAction;
+use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class BulkActionsController extends Controller
@@ -17,7 +19,7 @@ class BulkActionsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  IndexBulkAction $request
+     * @param IndexBulkAction $request
      * @return Response|array
      */
     public function index(IndexBulkAction $request)
@@ -35,7 +37,7 @@ class BulkActionsController extends Controller
         );
 
         if ($request->ajax()) {
-            if($request->has('bulk')){
+            if ($request->has('bulk')) {
                 return [
                     'bulkItems' => $data->pluck('id')
                 ];
@@ -49,8 +51,8 @@ class BulkActionsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function create()
     {
@@ -62,7 +64,7 @@ class BulkActionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreBulkAction $request
+     * @param StoreBulkAction $request
      * @return Response|array
      */
     public function store(StoreBulkAction $request)
@@ -83,9 +85,9 @@ class BulkActionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  BulkAction $bulkAction
-     * @return void
+     * @param BulkAction $bulkAction
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
     public function show(BulkAction $bulkAction)
     {
@@ -97,9 +99,9 @@ class BulkActionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  BulkAction $bulkAction
-     * @return Response
+     * @param BulkAction $bulkAction
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function edit(BulkAction $bulkAction)
     {
@@ -114,8 +116,8 @@ class BulkActionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateBulkAction $request
-     * @param  BulkAction $bulkAction
+     * @param UpdateBulkAction $request
+     * @param BulkAction $bulkAction
      * @return Response|array
      */
     public function update(UpdateBulkAction $request, BulkAction $bulkAction)
@@ -140,10 +142,10 @@ class BulkActionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DestroyBulkAction $request
-     * @param  BulkAction $bulkAction
-     * @return Response|bool
+     * @param DestroyBulkAction $request
+     * @param BulkAction $bulkAction
      * @throws \Exception
+     * @return Response|bool
      */
     public function destroy(DestroyBulkAction $request, BulkAction $bulkAction)
     {
@@ -157,22 +159,22 @@ class BulkActionsController extends Controller
     }
 
     /**
-    * Remove the specified resources from storage.
-    *
-    * @param  DestroyBulkAction $request
-    * @return  Response|bool
-    * @throws  \Exception
-    */
+     * Remove the specified resources from storage.
+     *
+     * @param  DestroyBulkAction $request
+     * @throws  \Exception
+     * @return  Response|bool
+     */
     public function bulkDestroy(DestroyBulkAction $request) : Response
     {
-        DB::transaction(function () use ($request){
+        DB::transaction(function () use ($request) {
             collect($request->data['ids'])
                 ->chunk(1000)
-                ->each(function($bulkChunk){
+                ->each(function ($bulkChunk) {
                     BulkAction::whereIn('id', $bulkChunk)->delete();
 
                     // TODO your code goes here
-            });
+                });
         });
 
         if ($request->ajax()) {
@@ -181,5 +183,4 @@ class BulkActionsController extends Controller
 
         return redirect()->back();
     }
-    
-    }
+}

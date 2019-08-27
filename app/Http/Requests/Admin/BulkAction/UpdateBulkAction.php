@@ -1,26 +1,27 @@
-<?php namespace App\Http\Requests\Admin\BulkAction;
+<?php
+
+namespace App\Http\Requests\Admin\BulkAction;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
 
 class UpdateBulkAction extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return  bool
+     * @return bool
      */
     public function authorize()
     {
         return Gate::allows('admin.bulk-action.edit', $this->bulkAction);
     }
 
-/**
+    /**
      * Get the validation rules that apply to the request.
      *
-     * @return  array
+     * @return array
      */
     public function rules()
     {
@@ -36,10 +37,10 @@ class UpdateBulkAction extends FormRequest
 
 
     /**
-    * Modify input data
-    *
-    * @return  array
-    */
+     * Modify input data
+     *
+     * @return  array
+     */
     public function getSanitized()
     {
         $sanitized = $this->validated();
@@ -56,5 +57,4 @@ class UpdateBulkAction extends FormRequest
 
         return $sanitized;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Admin\Post;
+<?php
+
+namespace App\Http\Requests\Admin\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
@@ -8,7 +10,7 @@ class DestroyPost extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return  bool
+     * @return bool
      */
     public function authorize()
     {
@@ -18,7 +20,7 @@ class DestroyPost extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return  array
+     * @return array
      */
     public function rules()
     {

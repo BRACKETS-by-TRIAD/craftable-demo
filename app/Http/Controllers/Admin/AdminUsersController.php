@@ -1,17 +1,19 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Admin\AdminUser\DestroyAdminUser;
 use App\Http\Requests\Admin\AdminUser\IndexAdminUser;
 use App\Http\Requests\Admin\AdminUser\StoreAdminUser;
 use App\Http\Requests\Admin\AdminUser\UpdateAdminUser;
-use App\Http\Requests\Admin\AdminUser\DestroyAdminUser;
-use Brackets\AdminListing\Facades\AdminListing;
-use Brackets\AdminAuth\Models\AdminUser;
-use Illuminate\Support\Facades\Config;
-use Brackets\AdminAuth\Services\ActivationService;
 use Brackets\AdminAuth\Activation\Facades\Activation;
+use Brackets\AdminAuth\Models\AdminUser;
+use Brackets\AdminAuth\Services\ActivationService;
+use Brackets\AdminListing\Facades\AdminListing;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
 use Spatie\Permission\Models\Role;
 
 class AdminUsersController extends Controller
@@ -37,7 +39,7 @@ class AdminUsersController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param  IndexAdminUser $request
+     * @param IndexAdminUser $request
      * @return Response|array
      */
     public function index(IndexAdminUser $request)
@@ -59,20 +61,19 @@ class AdminUsersController extends Controller
         }
 
         return view('admin.admin-user.index', ['data' => $data, 'activation' => Config::get('admin-auth.activation_enabled')]);
-
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function create()
     {
         $this->authorize('admin.admin-user.create');
 
-        return view('admin.admin-user.create',[
+        return view('admin.admin-user.create', [
             'activation' => Config::get('admin-auth.activation_enabled'),
             'roles' => Role::where('guard_name', $this->guard)->get(),
         ]);
@@ -81,7 +82,7 @@ class AdminUsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreAdminUser $request
+     * @param StoreAdminUser $request
      * @return Response|array
      */
     public function store(StoreAdminUser $request)
@@ -105,9 +106,9 @@ class AdminUsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  AdminUser $adminUser
-     * @return void
+     * @param AdminUser $adminUser
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return void
      */
     public function show(AdminUser $adminUser)
     {
@@ -119,9 +120,9 @@ class AdminUsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  AdminUser $adminUser
-     * @return Response
+     * @param AdminUser $adminUser
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function edit(AdminUser $adminUser)
     {
@@ -139,8 +140,8 @@ class AdminUsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateAdminUser $request
-     * @param  AdminUser $adminUser
+     * @param UpdateAdminUser $request
+     * @param AdminUser $adminUser
      * @return Response|array
      */
     public function update(UpdateAdminUser $request, AdminUser $adminUser)
@@ -152,7 +153,7 @@ class AdminUsersController extends Controller
         $adminUser->update($sanitized);
 
         // But we do have a roles, so we need to attach the roles to the adminUser
-        if($request->input('roles')) {
+        if ($request->input('roles')) {
             $adminUser->roles()->sync(collect($request->input('roles', []))->map->id->toArray());
         }
 
@@ -166,10 +167,10 @@ class AdminUsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DestroyAdminUser $request
-     * @param  AdminUser $adminUser
-     * @return Response|bool
+     * @param DestroyAdminUser $request
+     * @param AdminUser $adminUser
      * @throws \Exception
+     * @return Response|bool
      */
     public function destroy(DestroyAdminUser $request, AdminUser $adminUser)
     {
@@ -181,19 +182,18 @@ class AdminUsersController extends Controller
     }
 
     /**
-    * Resend activation e-mail
-    *
-    * @param    \Illuminate\Http\Request  $request
-    * @param  ActivationService $activationService
-    * @param    AdminUser $adminUser
-    * @return  array|\Illuminate\Http\Response
-    */
+     * Resend activation e-mail
+     *
+     * @param    \Illuminate\Http\Request  $request
+     * @param  ActivationService $activationService
+     * @param    AdminUser $adminUser
+     * @return  array|\Illuminate\Http\Response
+     */
     public function resendActivationEmail(Request $request, ActivationService $activationService, AdminUser $adminUser)
     {
-        if(Config::get('admin-auth.activation_enabled')) {
-
+        if (Config::get('admin-auth.activation_enabled')) {
             $response = $activationService->handle($adminUser);
-            if($response == Activation::ACTIVATION_LINK_SENT) {
+            if ($response == Activation::ACTIVATION_LINK_SENT) {
                 if ($request->ajax()) {
                     return ['message' => trans('brackets/admin-ui::admin.operation.succeeded')];
                 }
@@ -214,5 +214,4 @@ class AdminUsersController extends Controller
             return redirect()->back();
         }
     }
-
-    }
+}

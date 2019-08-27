@@ -1,9 +1,9 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
+
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -12,7 +12,7 @@ class ProfileController extends Controller
     /**
      * Guard used for admin user
      *
-     * @var  string
+     * @var string
      */
     protected $guard = 'admin';
 
@@ -25,7 +25,7 @@ class ProfileController extends Controller
     /**
      * Get logged user before each method
      *
-     * @param  Request $request
+     * @param Request $request
      */
     protected function setUser($request)
     {
@@ -39,8 +39,8 @@ class ProfileController extends Controller
     /**
      * Show the form for editing logged user profile.
      *
-     * @param  Request $request
-     * @return  \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\Response
      */
     public function editProfile(Request $request)
     {
@@ -54,8 +54,8 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param        \Illuminate\Http\Request $request
-     * @return    \Illuminate\Http\Response|array
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response|array
      */
     public function updateProfile(Request $request)
     {
@@ -91,8 +91,8 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Request $request
-     * @return  \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Http\Response
      */
     public function editPassword(Request $request)
     {
@@ -107,8 +107,8 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param        \Illuminate\Http\Request $request
-     * @return    \Illuminate\Http\Response|array
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response|array
      */
     public function updatePassword(Request $request)
     {
@@ -120,5 +120,4 @@ class ProfileController extends Controller
 
         return redirect('admin/password');
     }
-
 }

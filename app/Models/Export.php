@@ -1,11 +1,11 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Export extends Model
 {
-    
-    
     protected $fillable = [
         "title",
         "perex",
@@ -31,9 +31,8 @@ class Export extends Model
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute() {
+    public function getResourceUrlAttribute()
+    {
         return url('/admin/exports/'.$this->getKey());
     }
-
-    
 }

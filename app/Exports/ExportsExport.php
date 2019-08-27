@@ -1,9 +1,11 @@
-<?php namespace App\Exports;
+<?php
 
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+namespace App\Exports;
+
 use App\Models\Export;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
 class ExportsExport implements FromCollection, WithMapping, WithHeadings
 {

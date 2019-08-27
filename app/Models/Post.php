@@ -1,15 +1,16 @@
-<?php namespace App\Models;
+<?php
 
-use Illuminate\Database\Eloquent\Model;
+namespace App\Models;
+
 use Brackets\Media\HasMedia\HasMediaCollections;
 use Brackets\Media\HasMedia\HasMediaCollectionsTrait;
+use Brackets\Media\HasMedia\HasMediaThumbsTrait;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 use Spatie\MediaLibrary\Media;
-use Brackets\Media\HasMedia\HasMediaThumbsTrait;
 
 class Post extends Model implements HasMediaCollections, HasMediaConversions
 {
-
     use HasMediaCollectionsTrait;
     use HasMediaThumbsTrait;
     
@@ -39,11 +40,13 @@ class Post extends Model implements HasMediaCollections, HasMediaConversions
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute() {
+    public function getResourceUrlAttribute()
+    {
         return url('/admin/posts/'.$this->getKey());
     }
 
-    public function registerMediaCollections() {
+    public function registerMediaCollections()
+    {
         $this->addMediaCollection('cover')
             ->accepts('image/*');
 

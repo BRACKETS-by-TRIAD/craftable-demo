@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use File;
+use Illuminate\Console\Command;
 
 class RefreshDatabase extends Command
 {
