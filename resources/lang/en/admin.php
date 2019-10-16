@@ -148,5 +148,26 @@ return [
         ],
     ],
 
+    'article' => [
+        'title' => 'Articles',
+
+        'actions' => [
+            'index' => 'Articles',
+            'create' => 'New Article',
+            'edit' => 'Edit :name',
+            'will_be_published' => 'Article will be published at',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'title' => "Title",
+            'perex' => "Perex",
+            'published_at' => "Published at",
+            'enabled' => "Enabled",
+            'updated_by_admin_user_id' => "Last update",
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

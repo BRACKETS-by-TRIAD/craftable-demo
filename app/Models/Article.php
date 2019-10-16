@@ -1,16 +1,20 @@
-<?php
+<?php namespace App\Models;
 
-namespace App\Models;
-
+use Brackets\AdminAuth\Models\AdminUser;
 use Illuminate\Database\Eloquent\Model;
+use Brackets\Craftable\Traits\UpdatedByAdminUserTrait;
 
 class Article extends Model
 {
+        use UpdatedByAdminUserTrait;
+
+    
     protected $fillable = [
         "title",
         "perex",
         "published_at",
         "enabled",
+        "updated_by_admin_user_id",
     
     ];
     
@@ -31,8 +35,7 @@ class Article extends Model
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute()
-    {
+    public function getResourceUrlAttribute() {
         return url('/admin/articles/'.$this->getKey());
     }
 }

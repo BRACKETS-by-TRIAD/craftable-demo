@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Requests\Admin\Article;
+<?php namespace App\Http\Requests\Admin\Article;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
@@ -10,7 +8,7 @@ class DestroyArticle extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @return  bool
      */
     public function authorize()
     {
@@ -20,7 +18,7 @@ class DestroyArticle extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return  array
      */
     public function rules()
     {

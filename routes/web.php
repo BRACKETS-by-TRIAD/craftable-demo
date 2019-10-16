@@ -99,3 +99,14 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::post('/admin/bulk-actions/{bulkAction}',             'Admin\BulkActionsController@update')->name('admin/bulk-actions/update');
     Route::delete('/admin/bulk-actions/{bulkAction}',           'Admin\BulkActionsController@destroy')->name('admin/bulk-actions/destroy');
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(function () {
+    Route::get('/admin/articles',                               'Admin\ArticlesController@index');
+    Route::get('/admin/articles/create',                        'Admin\ArticlesController@create');
+    Route::post('/admin/articles',                              'Admin\ArticlesController@store');
+    Route::get('/admin/articles/{article}/edit',                'Admin\ArticlesController@edit')->name('admin/articles/edit');
+    Route::post('/admin/articles/bulk-destroy',                 'Admin\ArticlesController@bulkDestroy')->name('admin/articles/bulk-destroy');
+    Route::post('/admin/articles/{article}',                    'Admin\ArticlesController@update')->name('admin/articles/update');
+    Route::delete('/admin/articles/{article}',                  'Admin\ArticlesController@destroy')->name('admin/articles/destroy');
+});
