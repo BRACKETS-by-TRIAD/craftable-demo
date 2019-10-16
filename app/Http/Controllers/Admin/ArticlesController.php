@@ -11,6 +11,8 @@ use App\Models\Article;
 use Brackets\AdminListing\Facades\AdminListing;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ArticlesController extends Controller
 {
@@ -29,13 +31,21 @@ class ArticlesController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'title', 'published_at', 'enabled'],
+            ['id', 'title', 'published_at', 'enabled', 'updated_by_admin_user_id', 'updated_at'],
 
             // set columns to searchIn
-            ['id', 'title', 'perex']
+            ['id', 'title', 'perex'],
+            function ($query) use ($request) {
+                $query->with(['updatedByAdminUser']);
+            }
         );
 
         if ($request->ajax()) {
+            if ($request->has('bulk')) {
+                return [
+                    'bulkItems' => $data->pluck('id')
+                ];
+            }
             return ['data' => $data];
         }
 
@@ -65,7 +75,8 @@ class ArticlesController extends Controller
     {
         // Sanitize input
         $sanitized = $request->validated();
-
+        $sanitized['updated_by_admin_user_id'] = Auth::getUser()->id;
+    
         // Store the Article
         $article = Article::create($sanitized);
 
@@ -101,6 +112,8 @@ class ArticlesController extends Controller
     {
         $this->authorize('admin.article.edit', $article);
 
+        $article->load('updatedByAdminUser');
+    
         return view('admin.article.edit', [
             'article' => $article,
         ]);
@@ -116,13 +129,18 @@ class ArticlesController extends Controller
     public function update(UpdateArticle $request, Article $article)
     {
         // Sanitize input
-        $sanitized = $request->validated();
+        $sanitized = $request->getSanitized();
+        $sanitized['updated_by_admin_user_id'] = Auth::getUser()->id;
 
         // Update changed values Article
         $article->update($sanitized);
 
         if ($request->ajax()) {
-            return ['redirect' => url('admin/articles'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+            return [
+                'redirect' => url('admin/articles'),
+                'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
+                'object' => $article
+            ];
         }
 
         return redirect('admin/articles');
@@ -139,6 +157,32 @@ class ArticlesController extends Controller
     public function destroy(DestroyArticle $request, Article $article)
     {
         $article->delete();
+
+        if ($request->ajax()) {
+            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+        }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @param  DestroyArticle $request
+     * @throws  \Exception
+     * @return  Response|bool
+     */
+    public function bulkDestroy(DestroyArticle $request) : Response
+    {
+        DB::transaction(function () use ($request) {
+            collect($request->data['ids'])
+                ->chunk(1000)
+                ->each(function ($bulkChunk) {
+                    Article::whereIn('id', $bulkChunk)->delete();
+
+                    // TODO your code goes here
+                });
+        });
 
         if ($request->ajax()) {
             return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);

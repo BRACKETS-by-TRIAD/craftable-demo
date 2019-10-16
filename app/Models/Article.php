@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
+use Brackets\Craftable\Traits\UpdatedByAdminUserTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    use UpdatedByAdminUserTrait;
+
+    
     protected $fillable = [
         "title",
         "perex",
         "published_at",
         "enabled",
+        "updated_by_admin_user_id",
     
     ];
     

@@ -39,7 +39,7 @@ class UpdateBulkAction extends FormRequest
     /**
      * Modify input data
      *
-     * @return  array
+     * @return array
      */
     public function getSanitized()
     {

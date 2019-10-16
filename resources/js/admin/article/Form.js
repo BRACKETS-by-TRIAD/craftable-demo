@@ -9,6 +9,7 @@ Vue.component('article-form', {
                 perex:  '' ,
                 published_at:  '' ,
                 enabled:  false ,
+                updated_by_admin_user_id:  '' ,
                 
             }
         }

@@ -29,7 +29,7 @@ class StoreArticle extends FormRequest
             'perex' => ['nullable', 'string'],
             'published_at' => ['nullable', 'date'],
             'enabled' => ['required', 'boolean'],
-            
+                                    
         ];
     }
 }

@@ -25,7 +25,7 @@ class IndexArticle extends FormRequest
     public function rules()
     {
         return [
-            'orderBy' => 'in:id,title,published_at,enabled|nullable',
+            'orderBy' => 'in:id,title,published_at,enabled,updated_by_admin_user_id|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',
