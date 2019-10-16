@@ -4,7 +4,6 @@
 
 use App\Models\Author;
 
-
 /** @var  \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(Brackets\AdminAuth\Models\AdminUser::class, function (Faker\Generator $faker) {
     static $password;
@@ -156,4 +155,3 @@ $factory->define(App\Models\Article::class, function (Faker\Generator $faker) {
 
     ];
 });
-

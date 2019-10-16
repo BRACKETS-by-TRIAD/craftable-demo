@@ -184,10 +184,10 @@ class AdminUsersController extends Controller
     /**
      * Resend activation e-mail
      *
-     * @param    \Illuminate\Http\Request  $request
-     * @param  ActivationService $activationService
-     * @param    AdminUser $adminUser
-     * @return  array|\Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param ActivationService $activationService
+     * @param AdminUser $adminUser
+     * @return array|\Illuminate\Http\Response
      */
     public function resendActivationEmail(Request $request, ActivationService $activationService, AdminUser $adminUser)
     {

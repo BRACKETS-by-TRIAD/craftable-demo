@@ -161,9 +161,9 @@ class BulkActionsController extends Controller
     /**
      * Remove the specified resources from storage.
      *
-     * @param  DestroyBulkAction $request
-     * @throws  \Exception
-     * @return  Response|bool
+     * @param DestroyBulkAction $request
+     * @throws \Exception
+     * @return Response|bool
      */
     public function bulkDestroy(DestroyBulkAction $request) : Response
     {

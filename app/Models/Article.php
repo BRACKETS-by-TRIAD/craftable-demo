@@ -1,12 +1,13 @@
-<?php namespace App\Models;
+<?php
 
-use Brackets\AdminAuth\Models\AdminUser;
-use Illuminate\Database\Eloquent\Model;
+namespace App\Models;
+
 use Brackets\Craftable\Traits\UpdatedByAdminUserTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-        use UpdatedByAdminUserTrait;
+    use UpdatedByAdminUserTrait;
 
     
     protected $fillable = [
@@ -35,7 +36,8 @@ class Article extends Model
 
     /* ************************ ACCESSOR ************************* */
 
-    public function getResourceUrlAttribute() {
+    public function getResourceUrlAttribute()
+    {
         return url('/admin/articles/'.$this->getKey());
     }
 }
