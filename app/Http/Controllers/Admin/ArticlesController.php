@@ -168,9 +168,9 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resources from storage.
      *
-     * @param  DestroyArticle $request
-     * @throws  \Exception
-     * @return  Response|bool
+     * @param DestroyArticle $request
+     * @throws \Exception
+     * @return Response|bool
      */
     public function bulkDestroy(DestroyArticle $request) : Response
     {

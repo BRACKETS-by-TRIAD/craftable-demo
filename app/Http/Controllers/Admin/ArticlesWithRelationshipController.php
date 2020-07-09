@@ -9,9 +9,11 @@ use App\Http\Requests\Admin\ArticlesWithRelationship\StoreArticlesWithRelationsh
 use App\Http\Requests\Admin\ArticlesWithRelationship\UpdateArticlesWithRelationship;
 use App\Models\ArticlesWithRelationship;
 use App\Models\Author;
+use App\Models\Tag;
 use Brackets\AdminListing\Facades\AdminListing;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class ArticlesWithRelationshipController extends Controller
 {
@@ -35,8 +37,7 @@ class ArticlesWithRelationshipController extends Controller
             // set columns to searchIn
             ['id', 'title', 'perex'],
             function ($query) use ($request) {
-                $query->with(['author']);
-
+                $query->with(['author', 'tags']);
 
                 if ($request->has('authors')) {
                     $query->whereIn('author_id', $request->get('authors'));
@@ -66,6 +67,7 @@ class ArticlesWithRelationshipController extends Controller
 
         return view('admin.articles-with-relationship.create', [
             'authors' => Author::all(),
+            'tags' => Tag::all(),
         ]);
     }
 
@@ -81,9 +83,13 @@ class ArticlesWithRelationshipController extends Controller
         $sanitized = $request->validated();
 
         $sanitized['author_id'] = $request->getAuthorId();
+        $sanitized['tags'] = $request->getTags();
 
-        // Store the ArticlesWithRelationship
-        $articlesWithRelationship = ArticlesWithRelationship::create($sanitized);
+        DB::transaction(function () use ($sanitized) {
+            // Store the ArticlesWithRelationship
+            $articlesWithRelationship = ArticlesWithRelationship::create($sanitized);
+            $articlesWithRelationship->tags()->sync($sanitized['tags']);
+        });
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/articles-with-relationships'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
@@ -117,9 +123,12 @@ class ArticlesWithRelationshipController extends Controller
     {
         $this->authorize('admin.articles-with-relationship.edit', $articlesWithRelationship);
 
+        $articlesWithRelationship->load('tags');
+
         return view('admin.articles-with-relationship.edit', [
             'articlesWithRelationship' => $articlesWithRelationship,
             'authors' => Author::all(),
+            'tags' => Tag::all(),
         ]);
     }
 
@@ -136,9 +145,13 @@ class ArticlesWithRelationshipController extends Controller
         $sanitized = $request->validated();
 
         $sanitized['author_id'] = $request->getAuthorId();
+        $sanitized['tags'] = $request->getTags();
 
-        // Update changed values ArticlesWithRelationship
-        $articlesWithRelationship->update($sanitized);
+        DB::transaction(function () use ($articlesWithRelationship, $sanitized) {
+            // Update changed values ArticlesWithRelationship
+            $articlesWithRelationship->update($sanitized);
+            $articlesWithRelationship->tags()->sync($sanitized['tags']);
+        });
 
         if ($request->ajax()) {
             return ['redirect' => url('admin/articles-with-relationships'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];

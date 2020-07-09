@@ -124,6 +124,7 @@ return [
             'published_at' => "Published at",
             'enabled' => "Enabled",
             'author_id' => "Author",
+            'tags' => "Tags",
             
         ],
     ],
@@ -165,6 +166,22 @@ return [
             'published_at' => "Published at",
             'enabled' => "Enabled",
             'updated_by_admin_user_id' => "Last update",
+            
+        ],
+    ],
+
+    'tag' => [
+        'title' => 'Tags',
+
+        'actions' => [
+            'index' => 'Tags',
+            'create' => 'New Tag',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'name' => "Name",
             
         ],
     ],

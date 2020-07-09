@@ -14,27 +14,27 @@ class ArticlesWithRelationship extends Model
         "author_id",
 
     ];
-    
+
     protected $hidden = [
-    
+
     ];
-    
+
     protected $dates = [
         "published_at",
         "created_at",
         "updated_at",
-    
+
     ];
 
     protected $with = ['author'];
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()
     {
-        return url('/admin/articles-with-relationships/'.$this->getKey());
+        return url('/admin/articles-with-relationships/' . $this->getKey());
     }
 
     /* ************************ RELATIONS ************************* */
@@ -42,5 +42,10 @@ class ArticlesWithRelationship extends Model
     public function author()
     {
         return $this->belongsTo(Author::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

@@ -2,7 +2,10 @@ import AppForm from '../app-components/Form/AppForm';
 
 Vue.component('articles-with-relationship-form', {
     mixins: [AppForm],
-    props: ['authors'],
+    props: [
+        'authors',
+        'availableTags'
+    ],
     data: function() {
         return {
             form: {
@@ -11,6 +14,7 @@ Vue.component('articles-with-relationship-form', {
                 published_at:  '' ,
                 enabled:  false ,
                 author:  '' ,
+                tags: '',
             }
         }
     }

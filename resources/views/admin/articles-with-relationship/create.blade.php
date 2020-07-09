@@ -9,6 +9,7 @@
             <articles-with-relationship-form
                 :action="'{{ url('admin/articles-with-relationships') }}'"
                 :authors="{{$authors->toJson()}}"
+                :available-tags="{{ $tags->toJson() }}"
                 v-cloak
                 inline-template>
 

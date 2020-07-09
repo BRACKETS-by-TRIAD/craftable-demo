@@ -10,6 +10,7 @@
                 :action="'{{ $articlesWithRelationship->resource_url }}'"
                 :data="{{ $articlesWithRelationship->toJson() }}"
                 :authors="{{$authors->toJson()}}"
+                :available-tags="{{ $tags->toJson() }}"
                 v-cloak
                 inline-template>
             

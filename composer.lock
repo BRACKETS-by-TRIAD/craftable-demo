@@ -56,15 +56,15 @@
             "authors": [
                 {
                     "name": "Pavol Perdík",
-                    "role": "Developer",
                     "email": "pavol.perdik@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "David Běhal",
-                    "role": "Developer",
                     "email": "david.behal@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 }
             ],
             "description": "Authentication interface for brackets/admin-ui",
@@ -128,9 +128,9 @@
             "authors": [
                 {
                     "name": "Pavol Perdík",
-                    "role": "Developer",
                     "email": "pavol.perdik@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 }
             ],
             "description": "Query-building helper for listing of Eloquent models",
@@ -316,21 +316,21 @@
             "authors": [
                 {
                     "name": "Pavol Perdík",
-                    "role": "Developer",
                     "email": "pavol.perdik@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "Matej Minár",
-                    "role": "Developer",
                     "email": "matej.minar@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "Dušan Subally",
-                    "role": "Developer",
                     "email": "dusan.subally@triad.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 }
             ],
             "description": "Administration user interface template",
@@ -394,9 +394,9 @@
             "authors": [
                 {
                     "name": "David Běhal",
-                    "role": "Developer",
                     "email": "david.behal@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 }
             ],
             "description": "Advanced logger",
@@ -457,15 +457,15 @@
             "authors": [
                 {
                     "name": "Pavol Perdík",
-                    "role": "Developer",
                     "email": "pavol.perdik@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "David Běhal",
-                    "role": "Developer",
                     "email": "david.behal@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 }
             ],
             "description": "Administration toolkit for Laravel 5 - starting point for developing administration interface",
@@ -530,21 +530,21 @@
             "authors": [
                 {
                     "name": "Pavol Perdík",
-                    "role": "Developer",
                     "email": "pavol.perdik@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "David Běhal",
-                    "role": "Developer",
                     "email": "david.behal@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "Marek Kratochvíla",
-                    "role": "Developer",
                     "email": "marek.kratochvila@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 }
             ],
             "description": "Associate files with Eloquent models",
@@ -1294,6 +1294,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -1340,6 +1341,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
@@ -1754,8 +1756,8 @@
             "authors": [
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
-                    "role": "Developer",
-                    "email": "lcobucci@gmail.com"
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -3216,17 +3218,17 @@
             ],
             "authors": [
                 {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                },
+                {
                     "name": "Marijn Huizendveld",
                     "email": "marijn.huizendveld@gmail.com"
                 },
                 {
                     "name": "Thibaud Fabre",
                     "email": "thibaud@aztech.io"
-                },
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
                 }
             ],
             "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
@@ -3272,9 +3274,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Dump databases",
@@ -3328,9 +3330,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Manipulate images with an expressive API",
@@ -3378,9 +3380,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Easily optimize images using PHP",
@@ -3449,9 +3451,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "A Laravel 5 package to backup your application",
@@ -3593,9 +3595,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Permission handling for Laravel 5.4 and up",
@@ -3715,9 +3717,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Convert a pdf to an image",
@@ -3764,9 +3766,9 @@
             "authors": [
                 {
                     "name": "Alex Vanderbist",
-                    "role": "Developer",
                     "email": "alex@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Easily create, use and destroy temporary directories",
@@ -5311,6 +5313,7 @@
                 "psr",
                 "psr-7"
             ],
+            "abandoned": "laminas/laminas-diactoros",
             "time": "2019-07-10T16:13:25+00:00"
         }
     ],
@@ -5431,9 +5434,9 @@
             "authors": [
                 {
                     "name": "Marcel Pociot",
-                    "role": "Developer",
                     "email": "marcel@beyondco.de",
-                    "homepage": "https://beyondco.de"
+                    "homepage": "https://beyondco.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Symfony Var-Dump Server for Laravel",
@@ -5493,27 +5496,27 @@
             "authors": [
                 {
                     "name": "Pavol Perdík",
-                    "role": "Developer",
                     "email": "pavol.perdik@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "David Běhal",
-                    "role": "Developer",
                     "email": "david.behal@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "Matej Minár",
-                    "role": "Developer",
                     "email": "matej.minar@brackets.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 },
                 {
                     "name": "Dušan Subally",
-                    "role": "Developer",
                     "email": "dusan.subally@triad.sk",
-                    "homepage": "https://www.brackets.sk/en"
+                    "homepage": "https://www.brackets.sk/en",
+                    "role": "Developer"
                 }
             ],
             "description": "Laravel 5 CRUD generator for brackets/craftable",
@@ -6154,8 +6157,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -7154,8 +7157,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -7285,8 +7288,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -8110,8 +8113,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",

@@ -74,6 +74,7 @@
                                     <th is='sortable' :column="'published_at'">{{ trans('admin.articles-with-relationship.columns.published_at') }}</th>
                                     <th is='sortable' :column="'enabled'">{{ trans('admin.articles-with-relationship.columns.enabled') }}</th>
                                     <th :column="'author_id'">{{ trans('admin.articles-with-relationship.columns.author_id') }}</th>
+                                    <th :column="'tags'">{{ trans('admin.articles-with-relationship.columns.tags') }}</th>
                                     
                                     <th></th>
                                 </tr>
@@ -92,6 +93,11 @@
                                     <td>
                                         <user-detail-tooltip :user="item.author" v-if="item.author">
                                         </user-detail-tooltip>
+                                    </td>
+                                    <td>
+                                        <div v-for="tag in item.tags">
+                                            <span class="badge badge-success text-white">@{{ tag.name }}</span>
+                                        </div>
                                     </td>
                                     <td>
                                         <div class="row no-gutters">
