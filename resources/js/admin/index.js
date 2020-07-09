@@ -7,3 +7,4 @@ import './article';
 import './export';
 import './articles-with-relationship';
 import './bulk-action';
+import './tag';

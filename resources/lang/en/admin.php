@@ -169,5 +169,21 @@ return [
         ],
     ],
 
+    'tag' => [
+        'title' => 'Tags',
+
+        'actions' => [
+            'index' => 'Tags',
+            'create' => 'New Tag',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => "ID",
+            'name' => "Name",
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

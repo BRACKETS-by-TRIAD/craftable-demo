@@ -110,3 +110,14 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::post('/admin/articles/{article}',                    'Admin\ArticlesController@update')->name('admin/articles/update');
     Route::delete('/admin/articles/{article}',                  'Admin\ArticlesController@destroy')->name('admin/articles/destroy');
 });
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(function () {
+    Route::get('/admin/tags',                                   'Admin\TagsController@index');
+    Route::get('/admin/tags/create',                            'Admin\TagsController@create');
+    Route::post('/admin/tags',                                  'Admin\TagsController@store');
+    Route::get('/admin/tags/{tag}/edit',                        'Admin\TagsController@edit')->name('admin/tags/edit');
+    Route::post('/admin/tags/bulk-destroy',                     'Admin\TagsController@bulkDestroy')->name('admin/tags/bulk-destroy');
+    Route::post('/admin/tags/{tag}',                            'Admin\TagsController@update')->name('admin/tags/update');
+    Route::delete('/admin/tags/{tag}',                          'Admin\TagsController@destroy')->name('admin/tags/destroy');
+});
