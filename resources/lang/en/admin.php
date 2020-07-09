@@ -124,6 +124,7 @@ return [
             'published_at' => "Published at",
             'enabled' => "Enabled",
             'author_id' => "Author",
+            'tags' => "Tags",
             
         ],
     ],

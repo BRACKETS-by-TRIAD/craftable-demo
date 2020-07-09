@@ -20,9 +20,7 @@ class Tag extends Model
         "updated_at",
     
     ];
-    
-    
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
@@ -30,5 +28,12 @@ class Tag extends Model
     public function getResourceUrlAttribute()
     {
         return url('/admin/tags/'.$this->getKey());
+    }
+
+    /* ************************ RELATIONS ************************* */
+
+    public function articlesWithRelationships()
+    {
+        $this->belongsToMany(ArticlesWithRelationship::class);
     }
 }

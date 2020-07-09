@@ -30,7 +30,8 @@ class StoreArticlesWithRelationship extends FormRequest
             'published_at' => ['nullable', 'date'],
             'enabled' => ['required', 'boolean'],
             'author' => ['required'],
-            
+            'tags' => ['required']
+
         ];
     }
 
@@ -40,5 +41,14 @@ class StoreArticlesWithRelationship extends FormRequest
             return $this->get('author')['id'];
         }
         return null;
+    }
+
+    public function getTags(): array
+    {
+        if ($this->has('tags')) {
+            $tags = $this->get('tags');
+            return array_column($tags, 'id');
+        }
+        return [];
     }
 }

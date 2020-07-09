@@ -56,3 +56,35 @@
 
     </div>
 </div>
+
+
+<div class="card">
+    <div class="card-header">
+       <span><i class="fa fa-tags"></i> {{ trans('admin.articles-with-relationship.columns.tags') }} </span>
+    </div>
+
+    <div class="card-block">
+        <div class="form-group row align-items-center"
+             :class="{'has-danger': errors.has('tags'), 'has-success': this.fields.tags && this.fields.tags.valid }">
+            <label for="author_id"
+                   class="col-form-label text-center col-md-4 col-lg-3">{{ trans('admin.articles-with-relationship.columns.tags') }}</label>
+            <div class="col-md-8 col-lg-9">
+
+                <multiselect
+                        v-model="form.tags"
+                        :options="availableTags"
+                        :multiple="true"
+                        track-by="id"
+                        label="name"
+                        tag-placeholder="{{ __('Select Tags') }}"
+                        placeholder="{{ __('Tags') }}">
+                </multiselect>
+
+                <div v-if="errors.has('tags')" class="form-control-feedback form-text" v-cloak>@{{
+                    errors.first('tags') }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

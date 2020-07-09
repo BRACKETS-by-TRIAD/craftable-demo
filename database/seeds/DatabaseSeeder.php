@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\ArticlesWithRelationship::class, 20)->create();
         factory(\App\Models\BulkAction::class, 20)->create();
         factory(\App\Models\Tag::class, 10)->create();
+        $this->call(ArticlesWithRelationshipSeeder::class);
     }
 }
