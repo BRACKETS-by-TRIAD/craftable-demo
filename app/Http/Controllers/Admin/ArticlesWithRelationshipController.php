@@ -37,8 +37,7 @@ class ArticlesWithRelationshipController extends Controller
             // set columns to searchIn
             ['id', 'title', 'perex'],
             function ($query) use ($request) {
-                $query->with(['author']);
-
+                $query->with(['author', 'tags']);
 
                 if ($request->has('authors')) {
                     $query->whereIn('author_id', $request->get('authors'));
