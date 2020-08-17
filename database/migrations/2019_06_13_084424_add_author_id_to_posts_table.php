@@ -14,7 +14,7 @@ class AddAuthorIdToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('author_id')->nullable();
+            $table->unsignedInteger('author_id')->nullable();
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
         });
     }
