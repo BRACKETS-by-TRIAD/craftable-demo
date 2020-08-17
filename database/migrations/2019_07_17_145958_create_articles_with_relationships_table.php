@@ -19,7 +19,7 @@ class CreateArticlesWithRelationshipsTable extends Migration
             $table->text('perex')->nullable();
             $table->date('published_at')->nullable();
             $table->boolean('enabled')->default(false);
-            $table->integer('author_id')->nullable();
+            $table->unsignedInteger('author_id')->nullable();
             $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
             $table->timestamps();
         });

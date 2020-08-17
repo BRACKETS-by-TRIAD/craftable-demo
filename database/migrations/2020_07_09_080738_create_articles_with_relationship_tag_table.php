@@ -15,7 +15,7 @@ class CreateArticlesWithRelationShipTagTable extends Migration
     {
         Schema::create('articles_with_relationship_tag', function (Blueprint $table) {
             $table->unsignedInteger('articles_with_relationship_id');
-            $table->foreign('articles_with_relationship_id')
+            $table->foreign('articles_with_relationship_id', 'foreign_key_name')
                 ->references('id')
                 ->on('articles_with_relationships')
                 ->onDelete('cascade');

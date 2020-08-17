@@ -39,7 +39,7 @@ class Author extends Model implements HasMediaCollections, HasMediaConversions
             return mb_strtoupper(mb_substr($nameArray[0], 0, 1)) . mb_strtoupper(mb_substr($nameArray[1], 0, 1));
         }
 
-        return mb_strtoupper($this->title, 0, 2);
+        return mb_strtoupper($this->title);
     }
 
     public function getFullNameAttribute(): string
