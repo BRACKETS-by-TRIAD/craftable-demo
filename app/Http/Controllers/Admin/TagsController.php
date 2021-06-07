@@ -160,9 +160,9 @@ class TagsController extends Controller
     /**
      * Remove the specified resources from storage.
      *
-     * @param  DestroyTag $request
-     * @throws  \Exception
-     * @return  Response|bool
+     * @param DestroyTag $request
+     * @throws \Exception
+     * @return Response|bool
      */
     public function bulkDestroy(DestroyTag $request) : Response
     {

@@ -35,9 +35,18 @@ class ArticlesWithRelationshipController extends Controller
             ['id', 'title', 'published_at', 'enabled', 'author_id'],
 
             // set columns to searchIn
-            ['id', 'title', 'perex'],
+            ['id', 'title', 'perex', 'authors.title', 'tags.name'],
             function ($query) use ($request) {
                 $query->with(['author', 'tags']);
+
+                // add this line if you want to search by author attributes
+                $query->join('authors', 'authors.id', '=', 'articles_with_relationships.author_id');
+
+                // add this line if you want to search by tags attributes
+                $query->join('articles_with_relationship_tag', 'articles_with_relationship_tag.articles_with_relationship_id', '=', 'articles_with_relationships.id')
+                      ->join('tags', 'tags.id', '=', 'articles_with_relationship_tag.tag_id')
+                      ->groupBy('articles_with_relationships.id');
+
 
                 if ($request->has('authors')) {
                     $query->whereIn('author_id', $request->get('authors'));

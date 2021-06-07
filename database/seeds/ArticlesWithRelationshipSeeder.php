@@ -18,8 +18,8 @@ class ArticlesWithRelationshipSeeder extends Seeder
 
         $articlesWithRelationship->each(function ($articleWithRelationShip) use ($tags) {
             $articleWithRelationShip->tags()->sync(
-               $tags->random(rand(1, 3))->pluck('id')->toArray()
-           );
+                $tags->random(rand(1, 3))->pluck('id')->toArray()
+            );
         });
     }
 }
