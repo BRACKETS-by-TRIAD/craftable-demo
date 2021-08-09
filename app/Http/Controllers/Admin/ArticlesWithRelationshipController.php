@@ -132,7 +132,7 @@ class ArticlesWithRelationshipController extends Controller
     {
         $this->authorize('admin.articles-with-relationship.edit', $articlesWithRelationship);
 
-        $articlesWithRelationship->load('tags');
+        $articlesWithRelationship->load(['author', 'tags']);
 
         return view('admin.articles-with-relationship.edit', [
             'articlesWithRelationship' => $articlesWithRelationship,

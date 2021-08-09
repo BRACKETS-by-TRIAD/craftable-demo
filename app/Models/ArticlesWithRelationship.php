@@ -26,8 +26,6 @@ class ArticlesWithRelationship extends Model
 
     ];
 
-    protected $with = ['author'];
-
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
